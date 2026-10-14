@@ -1,0 +1,8 @@
+.title { padding-block-end: 12px; margin-block-end: 16px; font-size: 16px; font-weight: 700; border-block-end: 1px solid var(--ink-100); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-block-end: 20px; }
+.metric { padding: 20px; background: var(--canvas); border-radius: var(--radius-md); }
+.metric p { font-size: 13px; font-weight: 700; color: var(--ink-500); }
+.metric strong { display: block; margin-block-start: 6px; font-size: 40px; font-weight: 800; line-height: 1.1; }
+.primary { background: var(--red-600); }
+.primary p { color: rgba(255, 255, 255, 0.85); }
+.primary strong { color: #fff; }

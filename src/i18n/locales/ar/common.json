@@ -1,0 +1,176 @@
+{
+  "appName": "سيريتل",
+  "appTitle": "نظام إدارة التدريب",
+  "action": {
+    "save": "حفظ البيانات",
+    "close": "إغلاق",
+    "reset": "إعادة ضبط",
+    "viewDetails": "عرض التفاصيل",
+    "logout": "تسجيل الخروج",
+    "openMenu": "فتح القائمة",
+    "search": "بحث",
+    "create": "إنشاء",
+    "cancel":"الغاء",
+    "update":"تعديل"
+  },
+  "label": {
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "role": "الدور الوظيفي",
+    "status": "الحالة",
+    "actions": "الإجراءات",
+    "gpa": "المعدل",
+    "academicYear": "سنة الدراسة",
+    "major": "الاختصاص",
+    "city": "المدينة",
+    "department": "القسم",
+    "all": "الكل",
+    "search": "بحث...",
+    "age": "العمر",
+    "reason": "السبب",
+    "attachments": "المرفقات",
+    "cv": "السيرة الذاتية",
+    "academicQualification": "المؤهل الأكاديمي",
+    "nationalID": "الهوية الوطنية",
+    "personalPhoto": "الصورة الشخصية",
+    "fieldOfStudy": "مجال الدراسة",
+    "address": "العنوان",
+    "phoneNumber": "رقم الهاتف",
+    "university": "الجامعة",
+    "technicalSkills": "المهارات التقنية",
+    "SubmissionDate": "تاريخ التقديم",
+    "note": "الملاحظات",
+    "rating":"التقيم",
+    "fire":"فصل"
+    
+  },
+  "language": { "switchTo": "English" },
+  "role": {
+    "HR": "مسؤول الموارد البشرية",
+    "SUPERVISOR": "مشرف قسم",
+    "TRAINEE": "متدرب"
+  },
+  "status": {
+    "applicant": {
+      "new": "جديد",
+      "assigned": "مسند لقسم",
+      "interviewScheduled": "مقابلة مجدولة",
+      "accepted": "مقبول نهائياً",
+      "rejected": "مرفوض",
+      "pending": "قيد الانتظار",
+      "qualified": "مؤهل",
+      "for interview": "مقابلة مجدولة",
+      "interviewed": "تمت المقابلة",
+      "active": "نشط",
+      "completed": "مكتملة",
+      "fired": "مفصول",
+      "refreshing": "جارٍ تحديث البيانات..."
+
+    },
+    "interview": {
+      "scheduled": "مجدولة",
+      "completed": "مكتملة",
+      "accepted": "مقبول نهائياً"
+    },
+    "attendance": { "absent": "غائب" }
+  },
+  "major": {
+    "IT & Software Engineering": "هندسة المعلوماتية والبرمجيات",
+    "Computers & Automation Engineering": "هندسة الحواسيب والأتمتة",
+    "Telecommunications Engineering": "هندسة الاتصالات",
+    "AI & IoT Engineering": "هندسة الذكاء الصنعي وإنترنت الأشياء",
+    "Civil Engineering": "الهندسة المدنية",
+    "Business Administration": "إدارة الأعمال",
+    "Graphic Design": "التصميم الغرافيكي"
+  },
+  "city": {
+    "damascus": "دمشق",
+    "rural damascus": "ريف دمشق",
+    "aleppo": "حلب",
+    "latakia": "اللاذقية",
+    "tartus": "طرطوس",
+    "homs": "حمص",
+    "hama": "حماة",
+    "hasakah": "الحسكة",
+    "jableh": "جبلة",
+    "as sweida": "السويداء",
+    "qamishli": "القامشلي",
+    "deir ez zor": "دير الزور",
+    "idlib": "إدلب",
+    "raqqa": "الرقة",
+    "daraa": "درعا",
+    "quneitra": "القنيطرة"
+  },
+  "academicYear": { "final year": "سنة أخيرة", "graduated": "خريج" },
+  "reason": { "sick": "عذر صحي", "noExcuse": "بدون عذر" },
+  "audience": {
+    "allSupervisors": "جميع المشرفين",
+    "allTrainees": "جميع المتدربين"
+  },
+  "toast": { "error": "حدث خطأ، حاول مرة أخرى" },
+  "pagination": {
+    "previous": "الصفحة السابقة",
+    "next": "الصفحة التالية"
+  },
+
+  "modal":{
+    "deleteTitle":"تاكيد الحذف",
+    "description":"هل انت متاكد انك تريد حذف هذا",
+    "delete":"حذف"
+  },
+   "program": {
+    "backToPrograms": "العودة إلى البرامج",
+    "phasesTitle": "مراحل البرنامج",
+    "deadline": "تاريخ الانتهاء",
+    "noProgram": "البرنامج غير موجود",
+    "noPhases": "لم تتم إضافة أي مراحل بعد",
+    "noDescription": "لا يوجد وصف"
+  },
+  "task": {
+    "add": "إضافة مهمة",
+    "noTasks": "لم تتم إضافة مهام لهذه المرحلة بعد",
+    "assignee": "المسندة إلى",
+    "name" :"اسم المهمة",
+    "description":"وصف المهمة",
+    "create" :"انشاء مهمة جديدة ",
+    "deadline":"تاريخ الانتهاء",
+    "trainee":"المتدرب المعني",
+   "attachments": "المصادر والمرفقات",
+   "instructions":"التعليمات",
+   "priority":"الأهمية",
+   
+   "details": "تفاصيل المهمة",
+    "notFound": "المهمة غير موجودة",
+    "basicInfo": "المعلومات الأساسية",
+    "submission": "تسليم المتدرب",
+    "submittedFile": "ملف المهمة المرفوع",
+    "notSubmitted": "لم يقم المتدرب برفع ملف المهمة بعد",
+    "resource": "المصدر",
+    "noAttachments": "لا توجد مرفقات",
+    "evaluate": "تقييم المهمة",
+    "requestRevision": "طلب إصلاح المهمة",
+    "feedback": "الملاحظات",
+    "feedbackRequired": "يرجى كتابة الملاحظات أولاً",
+    "feedbackError": "حدث خطأ، يرجى المحاولة مجدداً",
+    "evaluationPlaceholder": "اكتب تقييمك وملاحظاتك حول أداء المتدرب...",
+    "revisionPlaceholder": "حدد التعديلات المطلوبة من المتدرب...",
+    "confirmEvaluation": "تأكيد التقييم",
+    "confirmRevision": "إرسال طلب الإصلاح",
+    "priorityLow": "منخفضة",
+    "priorityMedium": "متوسطة",
+    "priorityHigh": "مرتفعة",
+    "status": {
+      "pending": "قيد الانتظار",
+      "inProgress": "قيد التنفيذ",
+      "submitted": "تم التسليم",
+      "completed": "مكتملة",
+      "revisionRequired": "تحتاج إلى تعديل"
+    },
+
+    "completeDate":"تاريخ الاكمال",
+    "startDate":"تاريخ البدء"
+
+  }
+
+}
