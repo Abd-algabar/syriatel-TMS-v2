@@ -112,3 +112,8 @@ button {
 .gap8{
   gap: 8px
 }
+.flex-s-p{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
