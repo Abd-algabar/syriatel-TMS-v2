@@ -1,5 +1,5 @@
-import Card from '/home/orca/Documents/training/syriatel-TMS/src/components/ui/Card.jsx';
-import Badge from '/home/orca/Documents/training/syriatel-TMS/src/components/ui/Badge.jsx';
+import Card from '../../../../components/ui/Card.jsx';
+import Badge from '../../../../components/ui/Badge.jsx';
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import styles from "./AnnouncementPage.module.css";

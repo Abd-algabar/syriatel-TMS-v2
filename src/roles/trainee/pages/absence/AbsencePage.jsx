@@ -1,6 +1,6 @@
 import {UserRoundX} from "lucide-react";
-import Card from '/home/orca/Documents/training/syriatel-TMS/src/components/ui/Card.jsx';
-import Badge from '/home/orca/Documents/training/syriatel-TMS/src/components/ui/Badge.jsx';
+import Card from '../../../../components/ui/Card.jsx';
+import Badge from '../../../../components/ui/Badge.jsx';
 import styles from "./AbsencePage.module.css";
 export default function AbsencePage(){
     const absences={

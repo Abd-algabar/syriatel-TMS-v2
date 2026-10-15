@@ -1,9 +1,9 @@
-import Card from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Card.jsx";
-import Badge from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Badge.jsx";
-import Button from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Button.jsx"
-import Modal from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Modal.jsx"
+import Card from "../../../../components/ui/Card.jsx";
+import Badge from "../../../../components/ui/Badge.jsx";
+import Button from "../../../../components/ui/Button.jsx"
+import Modal from "../../../../components/ui/Modal.jsx"
 import styles from "./VacationPage.module.css";
-import {Field,Input} from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Field.jsx"
+import {Field,Input} from "../../../../components/ui/Field.jsx"
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";

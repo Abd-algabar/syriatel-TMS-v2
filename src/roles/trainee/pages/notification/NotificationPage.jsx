@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import Card from '/home/orca/Documents/training/syriatel-TMS/src/components/ui/Card.jsx';
-import Badge from '/home/orca/Documents/training/syriatel-TMS/src/components/ui/Badge.jsx';
+import Card from '../../../../components/ui/Card.jsx';
+import Badge from '../../../../components/ui/Badge.jsx';
 import { Clock } from 'lucide-react';
 import styles from "./NotificationPage.module.css"
 export default function NotificationPage(){

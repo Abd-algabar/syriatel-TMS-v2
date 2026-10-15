@@ -1,9 +1,9 @@
-import PieChart from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/PieChart.jsx"
-import ProgressBar from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/PorgressBar.jsx"
-import BlocArea from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Bloc_Area.jsx"
-import Button from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Button.jsx"
-import Modal from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Modal.jsx"
-import {Field,Input} from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Field.jsx"
+import PieChart from "../../../../components/ui/PieChart.jsx"
+import ProgressBar from "../../../../components/ui/PorgressBar.jsx"
+import BlocArea from "../../../../components/ui/Bloc_Area.jsx"
+import Button from "../../../../components/ui/Button.jsx"
+import Modal from "../../../../components/ui/Modal.jsx"
+import {Field,Input} from "../../../../components/ui/Field.jsx"
 import styles from "./EvaluationPage.module.css";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react"

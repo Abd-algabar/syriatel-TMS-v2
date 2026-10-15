@@ -1,9 +1,9 @@
 
-import Image from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Image.jsx";
-import TitleField from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Title_Field.jsx";
+import Image from "../../../../components/ui/Image.jsx";
+import TitleField from "../../../../components/ui/Title_Field.jsx";
 import TextField from "../../../../components/ui/Text_Field.jsx";
-import BlocArea from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Bloc_Area.jsx";
-import Button from "/home/orca/Documents/training/syriatel-TMS/src/components/ui/Button.jsx"
+import BlocArea from "../../../../components/ui/Bloc_Area.jsx";
+import Button from "../../../../components/ui/Button.jsx"
 import styles from "./ProfilePage.module.css"
 import { useTranslation } from 'react-i18next';
 
