@@ -37,15 +37,7 @@ export default function TraineesPage() {
       header: t("interviews.supervisor"),
       render: (tr) => tr.supervisor,
     },
-    {
-      key: "actions",
-      header: t("label.actions", { ns: "common" }),
-      render: (a) => (
-        <Button size="sm" loading={""} onClick={() => openModel(a)}>
-          x
-        </Button>
-      ),
-    },
+ 
   ];
 
   return loading ? (

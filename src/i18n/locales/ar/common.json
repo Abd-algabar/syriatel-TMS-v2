@@ -165,11 +165,28 @@
       "inProgress": "قيد التنفيذ",
       "submitted": "تم التسليم",
       "completed": "مكتملة",
-      "revisionRequired": "تحتاج إلى تعديل"
+      "revisionRequired": "تحتاج إلى تعديل",
+      "PENDING": "قيد الانتظار",
+    "IN_PROGRESS": "قيد التنفيذ",
+    "COMPLETED": "مكتملة",
+    "CANCELLED": "ملغاة",
+    "FOR_REVIEW": "قيد المراجعة",
+    "NEED_FIX": "تحتاج إلى إصلاح",
+    "OVERDUE": "متأخرة",
+    "UNKNOWN": "حالة غير معروفة"
     },
 
-    "completeDate":"تاريخ الاكمال",
-    "startDate":"تاريخ البدء"
+  "completeDate":"تاريخ الاكمال",
+  "startDate":"تاريخ البدء",
+  "noDeadline": "غير محدد",
+  "noDescription": "لا يوجد وصف",
+  "unknownTrainee": "متدرب غير معروف",
+  "unknownDepartment": "قسم غير محدد",
+  "overdue": "مهمة متأخرة",
+  "taskDeadline": "موعد المهمة",
+  "submissions": "التسليمات",
+  "score": "آخر تقييم",
+  "viewDetails": "عرض التفاصيل"
 
   }
 
