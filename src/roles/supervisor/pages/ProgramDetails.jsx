@@ -6,24 +6,25 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../../../components/ui/Loading";
 import CreateTaskModal from "../components/CreateTaskModal";
+import TaskCard from "../components/TaskCard";
 export default function ProgramDetails({ onAddTask, onTaskClick }) {
   const { t } = useTranslation("common");
 
   const { programId } = useParams();
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-const handleViewTask = (taskId) => {
-  navigate(`/supervisor/tasks/details/${taskId}`);
-};
-  const { error, loading, loadingAction, getProgram, program} = useAssigned();
-  const [showCreateTask,setShowCreateTask]=useState(false)
-  const [phase,setPhase]=useState("")
-  
-  const handelShowCreateTask=(phase)=>{
-      console.log("phase",phase)
-      setShowCreateTask(true)
-      setPhase(phase)
-  }
+  const handleViewTask = (taskId) => {
+    navigate(`/supervisor/tasks/details/${taskId}`);
+  };
+  const { error, loading, loadingAction, getProgram, program } = useAssigned();
+  const [showCreateTask, setShowCreateTask] = useState(false);
+  const [phase, setPhase] = useState("");
+
+  const handelShowCreateTask = (phase) => {
+    console.log("phase", phase);
+    setShowCreateTask(true);
+    setPhase(phase);
+  };
 
   console.log(program);
   const phases = program.phases || [];
@@ -32,130 +33,131 @@ const handleViewTask = (taskId) => {
     getProgram(programId);
   }, []);
 
-  return loadingAction ?  <Loading/> :(
+  return loadingAction ? (
+    <Loading />
+  ) : (
     <>
+      <main className={styles.page} dir="auto">
+        {/* العودة إلى صفحة البرامج */}
+        <button
+          className={styles.backButton}
+          onClick={() => window.history.back()}
+        >
+          <ArrowRight size={18} />
+          {t("program.backToPrograms")}
+        </button>
 
-          <main className={styles.page} dir="auto">
-      {/* العودة إلى صفحة البرامج */}
-      <button
-        className={styles.backButton}
-        onClick={() => window.history.back()}
-      >
-        <ArrowRight size={18} />
-        {t("program.backToPrograms")}
-      </button>
+        {/* معلومات البرنامج */}
+        <header className={styles.programHeader}>
+          <div className={styles.programIcon}>
+            <ClipboardList size={28} />
+          </div>
 
-      {/* معلومات البرنامج */}
-      <header className={styles.programHeader}>
-        <div className={styles.programIcon}>
-          <ClipboardList size={28} />
-        </div>
+          <div className={styles.programInfo}>
+            <h1>{program.title || program.name}</h1>
+            <p>{program.description}</p>
 
-        <div className={styles.programInfo}>
-          <h1>{program.title || program.name}</h1>
-          <p>{program.description}</p>
+            {program.deadline && (
+              <div className={styles.deadline}>
+                <CalendarDays size={16} />
+                <span>
+                  {t("program.deadline")}: {program.deadline}
+                </span>
+              </div>
+            )}
+          </div>
+        </header>
 
-          {program.deadline && (
-            <div className={styles.deadline}>
-              <CalendarDays size={16} />
-              <span>
-                {t("program.deadline")}: {program.deadline}
-              </span>
-            </div>
-          )}
-        </div>
-      </header>
+        {/* المراحل والمهام */}
+        <section className={styles.phases}>
+          <div className={styles.sectionHeader}>
+            <h2>{t("program.phasesTitle")}</h2>
+            <span className={styles.count}>{phases.length}</span>
+          </div>
 
-      {/* المراحل والمهام */}
-      <section className={styles.phases}>
-        <div className={styles.sectionHeader}>
-          <h2>{t("program.phasesTitle")}</h2>
-          <span className={styles.count}>{phases.length}</span>
-        </div>
+          {phases.length === 0 ? (
+            <div className={styles.empty}>{t("program.noPhases")}</div>
+          ) : (
+            phases.map((phase, index) => (
+              <article
+                className={styles.phase}
+                key={phase._id || phase.id || index}
+              >
+                {/* معلومات المرحلة */}
+                <div className={styles.phaseHeader}>
+                  <div className={styles.phaseInfo}>
+                    <span className={styles.phaseNumber}>{index + 1}</span>
 
-        {phases.length === 0 ? (
-          <div className={styles.empty}>{t("program.noPhases")}</div>
-        ) : (
-          phases.map((phase, index) => (
-            <article
-              className={styles.phase}
-              key={phase._id || phase.id || index}
-            >
-              {/* معلومات المرحلة */}
-              <div className={styles.phaseHeader}>
-                <div className={styles.phaseInfo}>
-                  <span className={styles.phaseNumber}>{index + 1}</span>
-
-                  <div>
-                    <h3>{phase.name}</h3>
-                    <p>{phase.description || t("program.noDescription")}</p>
+                    <div>
+                      <h3>{phase.name}</h3>
+                      <p>{phase.description || t("program.noDescription")}</p>
+                    </div>
                   </div>
+
+                  <button
+                    className={styles.addButton}
+                    onClick={() => handelShowCreateTask(phase)}
+                  >
+                    <Plus size={18} />
+                    {t("task.add")}
+                  </button>
                 </div>
 
-                <button
-                  className={styles.addButton}
-                  onClick={() => handelShowCreateTask(phase)}
-                >
-                  <Plus size={18} />
-                  {t("task.add")}
-                </button>
-              </div>
+                {/* مهام المرحلة */}
+                <div className={styles.tasks}>
+                  {(phase.tasks || []).length === 0 ? (
+                    <p className={styles.noTasks}>{t("task.noTasks")}</p>
+                  ) : (
+                    phase.tasks.map((task) => (
+                      // <button
+                      //   key={task._id || task.id}
+                      //   className={styles.task}
+                      //   onClick={() => handleViewTask(task.id)}
+                      // >
+                      //   <div className={styles.taskIcon}>
+                      //     <ClipboardList size={19} />
+                      //   </div>
 
-              {/* مهام المرحلة */}
-              <div className={styles.tasks}>
-                {(phase.tasks || []).length === 0 ? (
-                  <p className={styles.noTasks}>{t("task.noTasks")}</p>
-                ) : (
-                  phase.tasks.map((task) => (
-                    <button
-                      key={task._id || task.id}
-                      className={styles.task}
-                      onClick={() => handleViewTask(task.id)}
-                    >
-                      <div className={styles.taskIcon}>
-                        <ClipboardList size={19} />
-                      </div>
+                      //   <div className={styles.taskInfo}>
+                      //     <h4>{task.title}</h4>
+                      //     <p>
+                      //       {task.description || t("program.noDescription")}
+                      //     </p>
 
-                      <div className={styles.taskInfo}>
-                        <h4>{task.title}</h4>
-                        <p>{task.description || t("program.noDescription")}</p>
+                      //     {task.assignee && (
+                      //       <span className={styles.assignee}>
+                      //         {t("task.assignee")}:{" "}
+                      //         {typeof task.assignee === "string"
+                      //           ? task.assignee
+                      //           : task.assignee.fullname ||
+                      //             task.assignee.name ||
+                      //             task.assignee.email}
+                      //       </span>
+                      //     )}
+                      //   </div>
 
-                        {task.assignee && (
-                          <span className={styles.assignee}>
-                            {t("task.assignee")}:{" "}
-                            {typeof task.assignee === "string"
-                              ? task.assignee
-                              : task.assignee.fullname ||
-                                task.assignee.name ||
-                                task.assignee.email}
-                          </span>
-                        )}
-                      </div>
-
-                      <span className={styles.taskArrow}>
-                        <ArrowRight size={18} />
-                      </span>
-                    </button>
-                  ))
-                )}
-              </div>
-            </article>
-          ))
-        )}
-      </section>
-    </main>
-    {
-      showCreateTask&&(
-        <CreateTaskModal onClose={()=>setShowCreateTask(false)} phase={phase} />
-      )
-    }
+                      //   <span className={styles.taskArrow}>
+                      //     <ArrowRight size={18} />
+                      //   </span>
+                      // </button>
+                      <TaskCard task={task} key={task.id} />
+                    ))
+                  )}
+                </div>
+              </article>
+            ))
+          )}
+        </section>
+      </main>
+      {showCreateTask && (
+        <CreateTaskModal
+          onClose={() => setShowCreateTask(false)}
+          phase={phase}
+        />
+      )}
     </>
-
   );
 }
-
-
-
 
 // const program = {
 //   _id: "program-001",
@@ -572,5 +574,3 @@ const handleViewTask = (taskId) => {
 //     },
 //   ],
 // };
-
-

@@ -91,4 +91,11 @@ export const createFeedbackApi =async(taskId,body)=>{
 }
 
 
+export const deleteTaskApi =async(taskId)=>{ 
+  const response = await api.delete(`task/tasks/${taskId}`);
+  console.log(response.data)
+  return response.data
+}
+
+
   

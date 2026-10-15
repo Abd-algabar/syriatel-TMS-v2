@@ -159,7 +159,29 @@
       "inProgress": "In Progress",
       "submitted": "Submitted",
       "completed": "Completed",
-      "revisionRequired": "Revision Required"}
+      "revisionRequired": "Revision Required",
+      "PENDING": "Pending",
+    "IN_PROGRESS": "In Progress",
+    "COMPLETED": "Completed",
+    "CANCELLED": "Cancelled",
+    "FOR_REVIEW": "For Review",
+    "NEED_FIX": "Needs Fix",
+    "OVERDUE": "Overdue",
+    "UNKNOWN": "Unknown Status"
     
+    },
+    
+  "noDeadline": "Not specified",
+  "noDescription": "No description",
+  "unknownTrainee": "Unknown trainee",
+  "unknownDepartment": "Unassigned department",
+  "overdue": "Overdue",
+  "taskDeadline": "Task deadline",
+  "submissions": "Submissions",
+  "score": "Latest score",
+  "viewDetails": "View details"
+
+  
   }
+  
 }
