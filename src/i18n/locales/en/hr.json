@@ -12,7 +12,12 @@
     "reports": "Reports",
     "evaluations": "Evaluations",
     "registration": "Registration",
-    "programs":"Programs"
+    "profile": "Profile",
+    "trainingPrograms": "Training Program",
+    "vacations": "Vacations",
+    "evaluation": "Evaluations",
+    "notifications": "Notifications",
+    "programs": "Programs"
   },
   "dashboard": {
     "latestApplicants": "Latest applicants",
@@ -63,7 +68,9 @@
     "finalAccept": "Final accept",
     "accepted": "Accepted & enrolled",
     "empty": "No interviews yet",
-    "toast": { "accepted": "Applicant accepted and enrolled as a trainee" }
+    "toast": {
+      "accepted": "Applicant accepted and enrolled as a trainee"
+    }
   },
   "trainees": {
     "traineeId": "Trainee ID",
@@ -76,13 +83,17 @@
     "name": "Department name",
     "location": "Department location",
     "supervisorsCount": "Supervisors",
-    "toast": { "added": "Department added" }
+    "toast": {
+      "added": "Department added"
+    }
   },
   "supervisors": {
     "listTitle": "Supervisors",
     "add": "Add supervisor",
     "name": "Supervisor name",
-    "toast": { "added": "Supervisor added" }
+    "toast": {
+      "added": "Supervisor added"
+    }
   },
   "attendance": {
     "searchPlaceholder": "Search a trainee to see their absence record...",
@@ -97,7 +108,9 @@
     "target": "Audience",
     "title": "Title",
     "details": "Details",
-    "toast": { "sent": "Announcement sent" }
+    "toast": {
+      "sent": "Announcement sent"
+    }
   },
   "reports": {
     "title": "System reports & analytics",
@@ -128,5 +141,4 @@
     "phasesDescription": "Phase Description",
     "phaseName": "Phase Name"
   }
-
 }

@@ -1,0 +1,58 @@
+{   "profile":{
+            "personal": "المعلومات الشخصية",
+            "email": "البريد الإلكتروني:",
+            "phone": "رقم الهاتف:",
+            "birthDate": "تاريخ الميلاد:",
+            "city": "المدينة:",
+            "address": "العنوان:",
+            "education": "التعليم",
+            "university": "الجامعة:",
+            "field": "المجال:",
+            "academicMajor": "التخصص الأكاديمي:",
+            "yearOfStudy": "السنة الدراسية:",
+            "gpa": "المعدل التراكمي:",
+            "skills": "المهارات",
+            "technicalSkills": "المهارات التقنية:",
+            "otherInformation": "معلومات أخرى",
+            "commitment": "الالتزام:",
+            "previousTraining": "التدريب السابق:",
+            "howDidYouHearAboutUs": "كيف سمعت عنا؟",
+            "attachments": "المرفقات",
+            "cv": "السيرة الذاتية",
+            "idAttachment": "مرفق الهوية الشخصية",
+        "academicCertification": "الشهادة الأكاديمية",
+        "yes":"نعم",
+        "no":"لا",
+        "universityWorkshop":"ورشة عمل الجامعة",
+        "socialMedia":"وسائل التواصل الاجتماعي",
+        "previousInternship":"التدريب السابق",
+        "hi-TechExhibition":"معرض التكنولوجيا المتقدمة"
+            },
+    "evaluation":{
+            "reEvaluationRequest": "طلب إعادة التقييم",
+            "reason": "السبب",
+            "send": "إرسال",
+            "generalEvaluation": "التقييم العام",
+            "attendance": "الحضور",
+            "performance": "الأداء",
+            "teamWork": "العمل الجماعي",
+            "reEvaluate": "إعادة التقييم"
+            },
+    "vacation":{
+        "vacationRequests": "طلبات الإجازة",
+        "vacationRequest":"طلب اجازة",
+        "vacationRequestsSubtitle": "راجع طلبات الإجازة الخاصة بك وحالتها الحالية.",
+        "requests": "طلبات",
+        "startDate": "تاريخ البدء",
+        "endDate": "تاريخ الانتهاء",
+        "submitted": "تاريخ التقديم",
+        "pending": "قيد الانتظار",
+        "accepted": "مقبول",
+        "rejected": "مرفوض",
+        "addRequest":"اضافة طلب"
+        },
+        "announcement":{
+        "announcement":"اعلان"
+        }
+
+}
