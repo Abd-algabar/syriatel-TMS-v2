@@ -91,7 +91,8 @@ export default function ApplicantDetailsModal({
         {/* {applicant.files.map((f) => (
           <span key={f} className={styles.file}><FileText size={14} /> {f}</span>
         ))} */}
-        <Link to={applicant.cvl} target="_blank">
+        <Link to={applicant.cv} target="_blank">
+        {console.log("cv:",applicant.cv)}
           <span className={styles.file}>
             <FileText size={14} /> {c("label.cv")}
           </span>

@@ -38,6 +38,7 @@ export default function ScheduleInterviewModal({ applicant, onClose }) {
 
   };
 
+  // console.log("ScheduleInterviewModal",applicant.supervisors)
   return (
     <Modal
       title={t("applicants.interviewTitle", { name: applicant.name })}
@@ -46,7 +47,7 @@ export default function ScheduleInterviewModal({ applicant, onClose }) {
       <form className={form.form} onSubmit={handleSubmit}>
         <Field label={t('applicants.supervisorName')}>
           <Select name="trainer_id" required defaultValue={applicant.supervisorId}>
-             <option key={applicant.supervisors.name} value={applicant.supervisors.id}>{applicant.supervisors.name}</option>
+             <option key={applicant.supervisors.name} value={applicant.supervisors.id}>{applicant.supervisors.name }</option>
           </Select>
         </Field>
         <div className={form.row}>
