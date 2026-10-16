@@ -1,0 +1,142 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    min-width: 0;
+}
+.details {
+    color: var(--ink-700);
+    font-size: 14px;
+    margin-block-end: 12px;
+}
+
+.date {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--ink-500);
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--ink-200, );
+    border-radius: 50%;
+    color: var(--ink-500);
+    background: var(--surface, );
+}
+
+.top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-block-end: 8px;
+}
+.post {
+    gap: 12px;
+    margin-block-end: 8px;
+}
+
+.dateSection {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px;
+    border: 1px solid var(--ink-200, );
+    border-radius: 10px;
+    background: var(--ink-100, );
+}
+
+.dateSection {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 16px;
+    border: 1px solid var(--ink-200);
+    border-radius: 10px;
+    background: var(--ink-100);
+}
+
+.count {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 12px;
+    border: 1px solid var(--ink-200);
+    border-radius: 999px;
+    color: var(--ink-700);
+    background: var(--surface, #fff);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.dateBlock {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.dateLabel {
+    color: var(--ink-500);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+}
+
+.dateValue {
+    color: var(--ink-900);
+    font-size: 14px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.card:hover {
+    box-shadow: 0 6px 18px rgb(15 23 42 / 7%);
+    transform: translateY(-4px);
+    transition: 300ms;
+}
+
+.card:not(:hover) {
+    box-shadow: 0 6px 18px rgb(15 23 42 / 7%);
+    transform: translateY(0);
+    transition: 300ms
+}
+
+@media (max-width: 480px){
+    .page {
+            gap: 18px;
+        }
+    .arrow {
+            width: 28px;
+            height: 28px;
+        }
+
+        .dateSection {
+            gap: 8px;
+            padding: 12px 10px;
+        }
+        
+        .dateValue {
+            font-size: 12px;
+            white-space: normal;
+        }
+        
+        .dateLabel {
+            font-size: 9px;
+            letter-spacing: 0.4px;
+        }
+}

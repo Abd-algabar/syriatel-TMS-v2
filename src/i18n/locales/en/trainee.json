@@ -1,0 +1,60 @@
+{   "profile":{
+                "personal": "Personal",
+                "email": "Email:",
+                "phone": "Phone:",
+                "birthDate": "Birth Date:",
+                "city": "City:",
+                "address": "Address:",
+                "education": "Education",
+                "university": "University:",
+                "field": "Field:",
+                "academicMajor": "Academic Major:",
+                "yearOfStudy": "Year of Study:",
+                "gpa": "GPA:",
+                "skills": "Skills",
+                "technicalSkills": "Technical Skills:",
+                "otherInformation": "Other Information",
+                "commitment": "Commitment:",
+                "previousTraining": "Previous Training:",
+                "howDidYouHearAboutUs": "How did you hear about us?",
+                "attachments": "Attachments",
+                "cv": "CV",
+                "idAttachment": "ID Attachment",
+                "academicCertification": "Academic Certification",
+                "yes":"Yes",
+                "no":"No",
+                "universityWorkshop":" University Workshop",
+                "socialMedia":"Social Media",
+                "previousInternship":"Previous Internship",
+                "hi-TechExhibition":"Hi-TechExhibition"
+                },
+    "evaluation":{
+            "reEvaluationRequest": "Re-Evaluation Request",
+            "reason": "Reason",
+            "send": "Send",
+            "generalEvaluation": "General Evaluation",
+            "attendance": "Attendance",
+            "performance": "Performance",
+            "teamWork": "Teamwork",
+            "reEvaluate": "Re-Evaluate"
+            },
+        "vacation":
+        {
+        "vacationRequests": "Vacation Requests",
+        "vacationRequest":"Vacation Request",
+        "vacationRequestsSubtitle": "Review your vacation requests and their current status.",
+        "requests": "requests",
+        "startDate": "START DATE",
+        "endDate": "END DATE",
+        "submitted": "Submitted",
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "rejected": "Rejected",
+        "addRequest":"Add Request"
+
+        }   ,
+        "announcement":{
+        "announcement":"Announcement"
+        }     
+
+}

@@ -1,5 +1,6 @@
 import { hrModule } from './hr';
-import {supervisorModule} from "./supervisor/index.jsx"
+import { supervisorModule } from "./supervisor/index.jsx"
+import { traineeModule } from "./trainee/index.jsx"
 
 export const ROLES = {
   HR: 'HR',
@@ -19,7 +20,7 @@ export const ROLES = {
 export const roleRegistry = {
   [ROLES.HR]: hrModule,
   [ROLES.SUPERVISOR]: supervisorModule,
-  // [ROLES.TRAINEE]: traineeModule,
+  [ROLES.TRAINEE]: traineeModule,
 };
 
 export const loginRoles = Object.values(ROLES).map((role) => ({

@@ -11,8 +11,13 @@
     "announcements": "الإعلانات",
     "reports": "التقارير",
     "evaluations": "التقييمات",
-    "registration":"التسجيل",
-    "programs":"البرامج "
+    "registration": "التسجيل",
+    "profile": "الصفحة الشخصية",
+    "trainingPrograms": "البرنامج التدريبي",
+    "vacations": "الإجازات",
+    "evaluation": "التقييم",
+    "notifications": "الاشعارات",
+    "programs": "البرامج "
   },
   "dashboard": {
     "latestApplicants": "أحدث المتقدمين",
@@ -41,12 +46,9 @@
       "assigned": "تم إسناد المتقدم إلى القسم",
       "interviewScheduled": "تم تحديد موعد المقابلة"
     },
-    "chooseDepartment":"اختر الاقسم اولاً",
-    
-    "emptyDepartment":"لايوجد مشرفين في هذا القسم",
-    "loadingSupervisors":"جاري تحميل المشرفين..."
-    
-
+    "chooseDepartment": "اختر الاقسم اولاً",
+    "emptyDepartment": "لايوجد مشرفين في هذا القسم",
+    "loadingSupervisors": "جاري تحميل المشرفين..."
   },
   "assigned": {
     "applicant": "اسم المتقدم",
@@ -66,7 +68,9 @@
     "finalAccept": "قبول نهائي",
     "accepted": "تم القبول والتسجيل",
     "empty": "لا توجد مقابلات",
-    "toast": { "accepted": "تم قبول المتقدم وتسجيله كمتدرب" }
+    "toast": {
+      "accepted": "تم قبول المتقدم وتسجيله كمتدرب"
+    }
   },
   "trainees": {
     "traineeId": "الرقم التدريبي",
@@ -79,13 +83,17 @@
     "name": "اسم القسم",
     "location": "موقع القسم",
     "supervisorsCount": "عدد المشرفين",
-    "toast": { "added": "تمت إضافة القسم" }
+    "toast": {
+      "added": "تمت إضافة القسم"
+    }
   },
   "supervisors": {
     "listTitle": "قائمة المشرفين",
     "add": "إضافة مشرف جديد",
     "name": "اسم المشرف",
-    "toast": { "added": "تمت إضافة المشرف" }
+    "toast": {
+      "added": "تمت إضافة المشرف"
+    }
   },
   "attendance": {
     "searchPlaceholder": "ابحث عن متدرب لاسترجاع سجل الغياب...",
@@ -100,7 +108,9 @@
     "target": "الجهة المستهدفة",
     "title": "عنوان الإعلان",
     "details": "تفاصيل الإعلان",
-    "toast": { "sent": "تم إرسال الإعلان" }
+    "toast": {
+      "sent": "تم إرسال الإعلان"
+    }
   },
   "reports": {
     "title": "تقارير النظام والتحليلات",
@@ -109,28 +119,26 @@
     "exportPdf": "تصدير تقرير شامل PDF",
     "exporting": "جاري تصدير التقرير بصيغة PDF..."
   },
-  "registration":{
-    "title":"انشاء دورة جديدة",
+  "registration": {
+    "title": "انشاء دورة جديدة",
     "add": "إضافة دورة جديد",
-    "startDate":"تاريخ البدء",
-    "endDate":"تاريخ الانتهاء",
-    "startDateRegistration":"تاريخ بدء التسجيل",
-    "endDateRegistration":"تاريخ انتهاء التسجيل",
-    "openRegistration":"فتح باب التسجيل",
-    "closeRegistration":"اغلاق باب التسجيل",
-    "name":"اسم الدورة"
+    "startDate": "تاريخ البدء",
+    "endDate": "تاريخ الانتهاء",
+    "startDateRegistration": "تاريخ بدء التسجيل",
+    "endDateRegistration": "تاريخ انتهاء التسجيل",
+    "openRegistration": "فتح باب التسجيل",
+    "closeRegistration": "اغلاق باب التسجيل",
+    "name": "اسم الدورة"
   },
-   "program": {
+  "program": {
     "listTitle": "قائمة البرامج ",
     "add": "إضافة برنامج جديد",
     "name": "اسم البرنامج",
-    "endDate":"تاريخ الانتهاء",
-    "description":"الوصف",
-    "phasesTitle" :"عنوان المرحلة",
-    "addPhase":"اضافة مرحلة",
-    "phasesDescription":"وصف المرحلة",
-    "phaseName":"اسم المرحلة"
-
+    "endDate": "تاريخ الانتهاء",
+    "description": "الوصف",
+    "phasesTitle": "عنوان المرحلة",
+    "addPhase": "اضافة مرحلة",
+    "phasesDescription": "وصف المرحلة",
+    "phaseName": "اسم المرحلة"
   }
-
 }
