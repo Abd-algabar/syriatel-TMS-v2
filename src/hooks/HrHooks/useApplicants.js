@@ -9,14 +9,14 @@ import {
   //   filterApplicants,
 } from "../../Api/HrApi/applicantsApi";
 
-  const EMPTY_FILTERS = {
+const EMPTY_FILTERS = {
   search: "",
   year: "",
   major: "",
   city: "",
   gpa: "",
-  status:"",
-}
+  status: "",
+};
 
 export default function useApplicants() {
   // ==============================
@@ -63,7 +63,7 @@ export default function useApplicants() {
   const [loading, setLoading] = useState(false);
   const [applicantLoading, setApplicantLoading] = useState(false);
   const [actionLoading, setActionLoading] = useState(false);
-  const [rejectLOading,setRejectLOading]=useState("")
+  const [rejectLOading, setRejectLOading] = useState("");
   // ==============================
   // Error state
   // ==============================
@@ -72,28 +72,30 @@ export default function useApplicants() {
   // ==============================
   // Load all applicants
   // ==============================
-  const loadApplicants = useCallback(async (silent=false) => {
-    if (!silent) {
-      setLoading(true);
-    }
-    try {
-      
-      setError(null);
+  const loadApplicants = useCallback(
+    async (silent = false) => {
+      if (!silent) {
+        setLoading(true);
+      }
+      try {
+        setError(null);
 
-      const data = await getApplicants(page, limit);
+        const data = await getApplicants(page, limit);
 
-      setApplicants(data.data || []);
-      setPagination({
-        total: data.meta.total,
-        totalPages: data.meta.total_pages,
-      });
-    } catch (error) {
-      console.error("Failed to load applicants:", error);
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [page, limit]);
+        setApplicants(data.data || []);
+        setPagination({
+          total: data.meta.total,
+          totalPages: data.meta.total_pages,
+        });
+      } catch (error) {
+        console.error("Failed to load applicants:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [page, limit],
+  );
 
   // ==============================
   // Load one applicant
@@ -153,9 +155,8 @@ export default function useApplicants() {
   // Reject applicant
   // ==============================
   const reject = useCallback(
-   
     async (id) => {
-       setRejectLOading(id)
+      setRejectLOading(id);
       try {
         // setActionLoading(true);
         setError(null);
@@ -172,25 +173,22 @@ export default function useApplicants() {
         return null;
       } finally {
         // setActionLoading(false);
-        setRejectLOading("")
-
+        setRejectLOading("");
       }
     },
     [loadApplicants],
   );
 
   // assign application
-   const assign = useCallback(
-   
-    async (applicationId,supervisorId) => {
-       setActionLoading(true)
+  const assign = useCallback(
+    async (applicationId, supervisorId) => {
+      setActionLoading(true);
       try {
         // setActionLoading(true);
         setError(null);
 
-        const data = await assignApplicant(applicationId,supervisorId);
-        
-        
+        const data = await assignApplicant(applicationId, supervisorId);
+
         await loadApplicants(true);
 
         return data;
@@ -200,8 +198,6 @@ export default function useApplicants() {
         return null;
       } finally {
         setActionLoading(false);
-        
-
       }
     },
     [loadApplicants],
@@ -257,28 +253,6 @@ export default function useApplicants() {
   }, [appliedFilters]);
 
   // ==============================
-  // Filter applicants
-  // ==============================
-  //   const filter = useCallback(async (filters) => {
-  //     try {
-  //       setLoading(true);
-  //       setError(null);
-
-  //       const data = await filterApplicants(filters);
-
-  //       setApplicants(data || []);
-
-  //       return data;
-  //     } catch (error) {
-  //       console.error("Failed to filter applicants:", error);
-  //       setError(error);
-  //       return [];
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }, []);
-
-  // ==============================
   // Load applicants when hook mounts
   // ==============================
   useEffect(() => {
@@ -312,7 +286,7 @@ export default function useApplicants() {
       total: 0,
       totalPages: 0,
     });
-       loadApplicants();
+    loadApplicants();
 
     setIsSearchMode(false);
 
@@ -323,7 +297,6 @@ export default function useApplicants() {
   // Public API of the hook
   // ==============================
 
-  
   return {
     // Data
     applicants,
@@ -344,7 +317,7 @@ export default function useApplicants() {
     reject,
     assign,
     search,
-    
+
     // Filters
     filters,
     appliedFilters,
@@ -363,7 +336,7 @@ export default function useApplicants() {
     changeSearchPage,
     setPage,
 
-     // Search
+    // Search
     isSearchMode,
 
     // Optional helper

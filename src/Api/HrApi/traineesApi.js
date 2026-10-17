@@ -1,7 +1,12 @@
 import api from "../axios";
 
-export const getAllTraineesApi = async () => {
-  const response = await api.get("/trainee");
+export const getAllTraineesApi = async (page,limit) => {
+  const response = await api.get("/trainee",{
+     params: {
+      page,
+      limit,
+    },
+  });
   console.log(response.data)
   return response.data;
 };

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../../../components/ui/Button";
 import Card from "../../../components/ui/Card";
@@ -27,37 +27,30 @@ export default function ApplicantsPage() {
   const {
     applicants,
     loading,
-    error,
-
     // Applicant
     loadApplicant,
     applicant,
-
     // Loading
     actionLoading,
     setActionLoading,
     rejectLOading,
-
     // Normal pagination
     page,
     pagination,
     setPage,
-
     // Search
     filters,
     updateFilter,
     applyFilters,
     resetFilters,
     isSearchMode,
-
     // Search pagination
     searchPage,
     searchPagination,
     changeSearchPage,
     // reject
-    reject
+    reject,
   } = useApplicants();
-
 
   const handleViewDetails = async (id) => {
     setActionLoading(id);
@@ -71,8 +64,6 @@ export default function ApplicantsPage() {
       type: "details",
     });
   };
-
-
 
   const [modal, setModal] = useState(null); // { type: 'details' | 'assign' | 'schedule', applicant }
 
@@ -122,7 +113,7 @@ export default function ApplicantsPage() {
           <Button
             size="sm"
             variant="soft"
-            loading={rejectLOading==a.id}
+            loading={rejectLOading == a.id}
             disabled={
               a.status === APPLICANT_STATUS.REJECTED ||
               a.status === APPLICANT_STATUS.ACCEPTED
@@ -136,7 +127,7 @@ export default function ApplicantsPage() {
     },
   ];
 
-  console.log("applicants",applicants)
+  console.log("applicants", applicants);
   return loading ? (
     <Loading />
   ) : (

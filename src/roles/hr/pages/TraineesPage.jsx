@@ -10,11 +10,12 @@ import { toast } from "react-toastify";
 import Modal from "../../../components/ui/Modal";
 import { Field, Input } from "../../../components/ui/Field";
 import form from "../../../components/ui/Form.module.css";
+import Pagination from "../../../components/ui/Pagination";
 
 export default function TraineesPage() {
   const { t } = useTranslation("hr");
   // const {  getDepartment } = useData();
-  const { trainees, loading, fireTrainee } = useTrainees();
+  const { trainees, loading, fireTrainee,page,pagination ,setPage} = useTrainees();
   const [trainee, setTrainee] = useState("");
   const [fireTraineeModel, setFireTraineeModel] = useState(false);
   const [loadingFire, setLoadingFire] = useState("");
@@ -94,6 +95,13 @@ export default function TraineesPage() {
         rows={trainees}
         emptyText={t("trainees.empty")}
       />
+
+       <Pagination
+                currentPage={page}
+                totalPages={pagination.totalPages}
+                onPageChange={setPage}
+              />
+
 
       {fireTraineeModel && (
         <Modal  title={t("label.fire", { ns: "common" })+"-"+trainee.name} onClose={closeModal}>
