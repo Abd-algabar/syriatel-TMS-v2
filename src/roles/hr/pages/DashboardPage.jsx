@@ -5,6 +5,7 @@ import { INTERVIEW_STATUS } from '../../../constants';
 import { useData } from '../../../data/DataContext';
 import StatusBadge from '../components/StatusBadge';
 import styles from './DashboardPage.module.css';
+import UnderDevelopment from '../../../components/error/UnderDevelopment';
 
 export default function DashboardPage() {
   const { t } = useTranslation('hr');
@@ -18,6 +19,11 @@ export default function DashboardPage() {
   ];
   const upcoming = interviews.filter((i) => i.status === INTERVIEW_STATUS.SCHEDULED);
 
+
+    return (
+  
+      <UnderDevelopment/>
+    )
   return (
     <>
       <div className={styles.stats}>

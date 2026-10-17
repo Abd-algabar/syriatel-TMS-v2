@@ -80,6 +80,7 @@ export default function InterviewsPage() {
       const data = await acceptApplicant(id);
       console.log(data.message);
       toast.success(data.message);
+      setLoadingAccept("");
       await getAllInterview(true);
     } catch (error) {
       const message =
@@ -154,7 +155,7 @@ export default function InterviewsPage() {
               ></Button>
             )}
           </div>
-        ) : (
+        ) :  i.status == "accepted" && (
           <div
             style={{
               display: "flex",

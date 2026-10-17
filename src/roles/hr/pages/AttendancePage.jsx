@@ -6,6 +6,7 @@ import Table from '../../../components/ui/Table';
 import { useData } from '../../../data/DataContext';
 import StatusBadge from '../components/StatusBadge';
 import styles from './Pages.module.css';
+import UnderDevelopment from '../../../components/error/UnderDevelopment';
 
 export default function AttendancePage() {
   const { t } = useTranslation('hr');
@@ -21,6 +22,11 @@ export default function AttendancePage() {
     { key: 'status', header: t('label.status', { ns: 'common' }), render: (a) => <StatusBadge kind="attendance" status={a.status} /> },
     { key: 'reason', header: t('attendance.reason'), render: (a) => t(`reason.${a.reason}`, { ns: 'common' }) },
   ];
+
+  return (
+
+    <UnderDevelopment/>
+  )
 
   return (
     <>

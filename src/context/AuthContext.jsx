@@ -1,44 +1,10 @@
-// import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 
-// const AuthContext = createContext(null);
-// const STORAGE_KEY = 'syriatel-tms:user';
-// const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
-// function readStoredUser() {
-//   try {
-//     return JSON.parse(sessionStorage.getItem(STORAGE_KEY));
-//   } catch {
-//     return null;
-//   }
-// }
-
-// export function AuthProvider({ children }) {
-//   const [user, setUser] = useState(readStoredUser);
-
-//   // TODO: استبدل المحاكاة بطلب حقيقي إلى الـ API
-//   const login = useCallback(async ({ role,password, email }) => {
-//     await sleep(900);
-//     const next = { role, email };
-//     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-//     setUser(next);
-//     return next;
-//   }, []);
-
-//   const logout = useCallback(() => {
-//     sessionStorage.removeItem(STORAGE_KEY);
-//     setUser(null);
-//   }, []);
-
-//   const value = useMemo(() => ({ user, login, logout }), [user, login, logout]);
-//   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-// }
-
-// export const useAuth = () => useContext(AuthContext);
 
 import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from "react";
@@ -94,7 +60,7 @@ export function AuthProvider({ children }) {
     });
     // console.log(response)
     const accessToken = response.data.data.token;
-    console.log("Access token:", accessToken);
+    // console.log("Access token:", accessToken);
     console.log("Decoded user:", decodeJwt(accessToken));
     if (!accessToken) {
       throw new Error("Access token is missing");
@@ -141,6 +107,34 @@ export function AuthProvider({ children }) {
     setToken(null);
   }, []);
 
+
+  useEffect(() => {
+  const handleForbidden = () => {
+    const currentToken = localStorage.getItem(STORAGE_KEY);
+
+    if (!currentToken || isTokenExpired(currentToken)) {
+      logout();
+      return;
+    }
+
+    const decodedUser = decodeJwt(currentToken);
+
+    if (!decodedUser?.roles?.[0]) {
+      logout();
+      return;
+    }
+
+    setToken(currentToken);
+  };
+
+  window.addEventListener("auth:forbidden", handleForbidden);
+
+  return () => {
+    window.removeEventListener("auth:forbidden", handleForbidden);
+  };
+}, [logout]);
+
+
   const value = useMemo(
     () => ({
       token,
@@ -154,6 +148,9 @@ export function AuthProvider({ children }) {
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
+
+
+
 
 export const useAuth = () => {
   const context = useContext(AuthContext);

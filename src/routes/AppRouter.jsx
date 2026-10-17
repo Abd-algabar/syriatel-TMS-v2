@@ -3,7 +3,7 @@ import AppShell from '../components/layout/AppShell';
 import { useAuth } from '../context/AuthContext';
 import LoginPage from '../features/auth/LoginPage';
 import { roleRegistry } from '../roles';
-import ProgramDetails from '../roles/supervisor/pages/ProgramDetails';
+
 /** يمنع الوصول إلا لمن يملك الدور المطلوب */
 function RequireRole({ role, children }) {
   const { user } = useAuth();
@@ -49,7 +49,6 @@ export default function AppRouter() {
           ))}
         </Route>
       ))}
-
 
       <Route path="*" element={<HomeRedirect />} />
     </Routes>

@@ -136,6 +136,7 @@ export default function ApplicantsPage() {
     },
   ];
 
+  console.log("applicants",applicants)
   return loading ? (
     <Loading />
   ) : (

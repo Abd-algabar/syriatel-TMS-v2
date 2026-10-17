@@ -180,8 +180,16 @@
   "submissions": "Submissions",
   "score": "Latest score",
   "viewDetails": "View details"
-
-  
+  },
+    "underDevelopment": {
+    "badge": "We're improving your experience",
+    "eyebrow": "Coming soon — A better experience",
+    "title": "This page is",
+    "titleAccent": "under development",
+    "description": "We're working on this page to provide you with a better and smoother experience. Thank you for your patience. We look forward to seeing you soon!",
+    "homeButton": "Back to the home page",
+    "footerNote": "Syriatel · Connecting People",
+    "footer": "Syriatel — Together towards a better experience"
   }
   
 }

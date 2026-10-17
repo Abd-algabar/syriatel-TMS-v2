@@ -2,6 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://syriateltms-production.up.railway.app/api/v1",
+  timeout: 30000,
 });
 
 // إضافة JWT تلقائيًا إلى كل طلب
@@ -14,5 +15,23 @@ api.interceptors.request.use((config) => {
     
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+
+  (error) => {
+    const status = error.response?.status;
+
+    if (status === 401) {
+      window.dispatchEvent(new Event("auth:unauthorized"));
+    }
+
+    if (status === 403) {
+      window.dispatchEvent(new Event("auth:forbidden"));
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export default api;

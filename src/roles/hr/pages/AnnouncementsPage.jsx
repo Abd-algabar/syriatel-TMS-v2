@@ -13,6 +13,7 @@ import { useToast } from '../../../context/ToastContext';
 import { useData } from '../../../data/DataContext';
 import useBusy from '../../../hooks/useBusy';
 import styles from './AnnouncementsPage.module.css';
+import UnderDevelopment from '../../../components/error/UnderDevelopment';
 
 export default function AnnouncementsPage() {
   const { t } = useTranslation('hr');
@@ -30,6 +31,10 @@ export default function AnnouncementsPage() {
       setShowAdd(false);
     });
   };
+
+  return(
+    <UnderDevelopment/>
+  )
 
   return (
     <>

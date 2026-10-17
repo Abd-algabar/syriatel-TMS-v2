@@ -72,9 +72,12 @@ export default function useApplicants() {
   // ==============================
   // Load all applicants
   // ==============================
-  const loadApplicants = useCallback(async () => {
-    try {
+  const loadApplicants = useCallback(async (silent=false) => {
+    if (!silent) {
       setLoading(true);
+    }
+    try {
+      
       setError(null);
 
       const data = await getApplicants(page, limit);
@@ -160,7 +163,7 @@ export default function useApplicants() {
         const data = await rejectApplicant(id);
 
         // إعادة تحميل البيانات بعد الرفض
-        await loadApplicants();
+        await loadApplicants(true);
 
         return data;
       } catch (error) {
@@ -187,8 +190,8 @@ export default function useApplicants() {
 
         const data = await assignApplicant(applicationId,supervisorId);
         
-        // إعادة تحميل البيانات بعد الرفض
-        await loadApplicants();
+        
+        await loadApplicants(true);
 
         return data;
       } catch (error) {
@@ -197,7 +200,7 @@ export default function useApplicants() {
         return null;
       } finally {
         setActionLoading(false);
-        // setRejectLOading("")
+        
 
       }
     },

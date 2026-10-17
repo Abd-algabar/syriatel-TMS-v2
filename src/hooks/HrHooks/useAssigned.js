@@ -4,20 +4,20 @@ import { getAllAssignApi } from "../../Api/HrApi/assignApi";
 
 export default function useAssign() {
   const [assigned, setAssigned] = useState([]);
-  const [loading,setLoading]=useState(true)
-  const [error,setError]=useState(null)
-  
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const search = useCallback(async () => {
-        setLoading(true)
+  const search = useCallback(async (silent = false) => {
+    if (!silent) {
+      setLoading(true);
+    }
+
     try {
-      
       setError(null);
 
-      const data = await getAllAssignApi( );
-        console.log(data)
-      setAssigned(data.data|| []);
-
+      const data = await getAllAssignApi();
+      console.log(data);
+      setAssigned(data.data || []);
 
       return data;
     } catch (error) {
@@ -29,25 +29,20 @@ export default function useAssign() {
     }
   }, []);
 
-
- 
- 
-
   useEffect(() => {
-    search()
+    search();
   }, []);
 
   return {
     // operation
-    
+
     // loading
     loading,
-    
 
     // state
     assigned,
 
     // Error
-    error
+    error,
   };
 }

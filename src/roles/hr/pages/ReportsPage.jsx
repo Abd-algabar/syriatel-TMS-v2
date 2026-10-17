@@ -5,6 +5,7 @@ import Card from '../../../components/ui/Card';
 import { useToast } from '../../../context/ToastContext';
 import { useData } from '../../../data/DataContext';
 import styles from './ReportsPage.module.css';
+import UnderDevelopment from '../../../components/error/UnderDevelopment';
 
 export default function ReportsPage() {
   const { t } = useTranslation('hr');
@@ -12,6 +13,13 @@ export default function ReportsPage() {
   const { toast } = useToast();
 
   const acceptanceRate = applicants.length ? Math.round((trainees.length / applicants.length) * 100) : 0;
+
+
+
+    return (
+  
+      <UnderDevelopment/>
+    )
 
   return (
     <Card>
