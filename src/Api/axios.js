@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://syriateltms-production.up.railway.app/api/v1",
+  baseURL: "https://syriatel.houseofgeniuses.tech/api/v1",
   timeout: 30000,
 });
 

@@ -87,7 +87,8 @@ export default function InterviewsPage() {
          const message = error.response?.data?.message || error.message || "error in interview";
         // console.log(message)
         toast.error(Array.isArray(message) ? message.join("، ") : message);
-
+      }finally{
+        setLoadingAccept('')
       }
   
      

@@ -9,7 +9,15 @@ import UnderDevelopment from '../../../components/error/UnderDevelopment';
 
 export default function DashboardPage() {
   const { t } = useTranslation('hr');
-  const { applicants, trainees, interviews, departments, getApplicant, getSupervisor } = useData();
+  const {  trainees, interviews, departments, getApplicant, getSupervisor } = useData();
+
+  const applicants=[
+    {id:1,name:"ali", status:"pending",date:new Date().toISOString().split("T")[0]},
+    {id:2,name:"ali2", status:"pending",date:new Date().toISOString().split("T")[0]},
+    {id:3,name:"ali3", status:"pending",date:new Date().toISOString().split("T")[0]},
+    {id:4,name:"ali4", status:"pending",date:new Date().toISOString().split("T")[0]},
+    {id:5,name:"ali5", status:"pending",date:new Date().toISOString().split("T")[0]},
+  ]
 
   const stats = [
     { label: t('nav.applicants'), value: applicants.length, icon: Users },
@@ -17,13 +25,19 @@ export default function DashboardPage() {
     { label: t('nav.interviews'), value: interviews.length, icon: CalendarCheck },
     { label: t('nav.departments'), value: departments.length, icon: Building2 },
   ];
-  const upcoming = interviews.filter((i) => i.status === INTERVIEW_STATUS.SCHEDULED);
+  const upcoming = [
+    {id:1,name:"ali", supname:"yazan",date:new Date().toISOString()},
+    {id:2,name:"ali2", supname:"pending",date:new Date().toISOString()},
+    {id:3,name:"ali3", supname:"pending",date:new Date().toISOString()},
+    {id:4,name:"ali4", supname:"pending",date:new Date().toISOString()},
+    {id:5,name:"ali5", supname:"pending",date:new Date().toISOString()},
+  ] ;
 
 
-    return (
+      return (
   
-      <UnderDevelopment/>
-    )
+        <UnderDevelopment/>
+      )
   return (
     <>
       <div className={styles.stats}>
@@ -42,12 +56,13 @@ export default function DashboardPage() {
         <Card>
           <h4 className={styles.heading}><Clock size={18} /> {t('dashboard.latestApplicants')}</h4>
           <ul className={styles.list}>
-            {applicants.slice(0, 3).map((a) => (
+            {applicants.map((a) => (
               <li key={a.id} className={styles.item}>
-                <div>
+                <d  iv>
                   <p className={styles.itemTitle}>{a.name}</p>
-                  <p className={styles.itemSub}>{t(`major.${a.major}`, { ns: 'common' })} · {t(`city.${a.city}`, { ns: 'common' })}</p>
-                </div>
+                  {/* <p className={styles.itemSub}>{t(`major.${a.major}`, { ns: 'common' })} · {t(`city.${a.city}`, { ns: 'common' })}</p> */}
+                  <p className={styles.itemSub}>{a.date} </p>
+                </d>
                 <StatusBadge status={a.status} />
               </li>
             ))}
@@ -60,12 +75,12 @@ export default function DashboardPage() {
             {upcoming.map((i) => (
               <li key={i.id} className={styles.item}>
                 <div>
-                  <p className={styles.itemTitle}>{getApplicant(i.applicantId)?.name}</p>
-                  <p className={styles.itemSub}>{t('dashboard.supervisorLine', { name: getSupervisor(i.supervisorId)?.name })}</p>
+                  <p className={styles.itemTitle}>{i.name}</p>
+                  <p className={styles.itemSub}>{t('dashboard.supervisorLine', { name: i.supname })}</p>
                 </div>
                 <div className={styles.when}>
                   <p>{i.date}</p>
-                  <p>{i.time}</p>
+                  {/* <p>{i.time}</p> */}
                 </div>
               </li>
             ))}
