@@ -1,4 +1,4 @@
-
+import { changePassword } from "../../../../Api/Trainee/profileApi.js";
 import Image from "../../../../components/ui/Image.jsx";
 import TitleField from "../../../../components/ui/Title_Field.jsx";
 import TextField from "../../../../components/ui/Text_Field.jsx";

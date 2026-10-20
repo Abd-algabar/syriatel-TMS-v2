@@ -10,6 +10,8 @@ import EvaluationPage from "./pages/evaluation/EvaluationPage";
 import NotificationPage from  "./pages/notification/NotificationPage"
 import AbsencePage from "./pages/absence/AbsencePage"
 import Dashboard from "./pages/dashboard/DashboardPage";
+import TaskDetailsPage from "./pages/training_program/TrainingProgramTaskCard";
+
 export const traineeModule = {
   role: 'TRAINEE',
   basePath: '/trainee',
@@ -23,4 +25,11 @@ export const traineeModule = {
     { path: 'absences', icon: CalendarX, labelKey: 'hr:nav.attendance', Component: AbsencePage },
     { path: 'notifications', icon: Bell, labelKey: 'hr:nav.notifications', Component: NotificationPage },
   ],
+
+  extraRoutes:[
+        {
+        path: "tasks/details/:taskId",
+        Component: TaskDetailsPage,
+      },
+  ]
 };
