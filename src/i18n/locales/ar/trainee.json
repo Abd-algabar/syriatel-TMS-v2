@@ -43,8 +43,6 @@
         "vacationRequest":"طلب اجازة",
         "vacationRequestsSubtitle": "راجع طلبات الإجازة الخاصة بك وحالتها الحالية.",
         "requests": "طلبات",
-        "startDate": "تاريخ البدء",
-        "endDate": "تاريخ الانتهاء",
         "submitted": "تاريخ التقديم",
         "pending": "قيد الانتظار",
         "accepted": "مقبول",
@@ -53,6 +51,10 @@
         },
         "announcement":{
         "announcement":"اعلان"
+        },
+        "dashboard":{
+                "completed_tasks_count":"عدد المهام المنجزة",
+                "assigned_tasks_count":"عدد المهام المسندة"
         }
 
 }

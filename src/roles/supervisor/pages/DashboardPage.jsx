@@ -47,7 +47,6 @@ export default function DashboardPage() {
             ))}
           </ul>
         </Card>
-
         <Card>
           <h4 className={styles.heading}><CalendarCheck size={18} /> {t('dashboard.upcomingInterviews')}</h4>
           <ul className={styles.list}>

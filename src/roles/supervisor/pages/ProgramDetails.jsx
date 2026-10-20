@@ -9,7 +9,7 @@ import CreateTaskModal from "../components/CreateTaskModal";
 import TaskCard from "../components/TaskCard";
 export default function ProgramDetails({ onAddTask, onTaskClick }) {
   const { t } = useTranslation("common");
-
+  
   const { programId } = useParams();
   const navigate = useNavigate();
 

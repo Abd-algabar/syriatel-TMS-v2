@@ -1,6 +1,5 @@
 import Card from '../../../../components/ui/Card.jsx';
 import Badge from '../../../../components/ui/Badge.jsx';
-import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import styles from "./AnnouncementPage.module.css";
 export default function AnnouncementPage(){
@@ -66,35 +65,10 @@ export default function AnnouncementPage(){
                         <h4>{a.title}</h4>
                           <Badge>{a.publisher}</Badge>
                         </div>
-                        <div className={styles.post}>
-                          <h5>
-                          {a.post}
-                        </h5>
-                        </div>
-                        <div className={styles.dateSection}>
-                          <div className={styles.dateBlock}>
-                            <span className={styles.dateLabel}>
-                              {t("vacation.startDate")}
-                            </span>
-
-                            <span className={styles.dateValue}>
-                              {a.start_date}
-                            </span>
-                          </div>
-
-                          <div className={styles.arrow}>
-                            <ArrowRight size={18} strokeWidth={1.8} />
-                          </div>
-
-                          <div className={styles.dateBlock}>
-                            <span className={styles.dateLabel}>
-                              {t("vacation.endDate")}
-                            </span>
-
-                            <span className={styles.dateValue}>
-                              {a.end_date}
-                            </span>
-                          </div>
+                        <div className={styles.postSection}>
+                          <span className={styles.post}>
+                              {a.post}
+                          </span>
                     </div>
                         
                         
