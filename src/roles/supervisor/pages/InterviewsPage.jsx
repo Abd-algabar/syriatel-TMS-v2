@@ -84,14 +84,14 @@ export default function InterviewsPage() {
         toast.success(data.message ||"success")
         setViewNote(false)
       } catch (error) {
-         const message = error.response?.data?.message || error.message || "error in interview";
+        const message = error.response?.data?.message || error.message || "error in interview";
         // console.log(message)
         toast.error(Array.isArray(message) ? message.join("، ") : message);
       }finally{
         setLoadingAccept('')
       }
   
-     
+    
     };
   
   const columns = [

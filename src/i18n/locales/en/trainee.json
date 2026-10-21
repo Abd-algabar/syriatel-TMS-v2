@@ -44,8 +44,6 @@
         "vacationRequest":"Vacation Request",
         "vacationRequestsSubtitle": "Review your vacation requests and their current status.",
         "requests": "requests",
-        "startDate": "START DATE",
-        "endDate": "END DATE",
         "submitted": "Submitted",
         "pending": "Pending",
         "accepted": "Accepted",
@@ -55,6 +53,10 @@
         }   ,
         "announcement":{
         "announcement":"Announcement"
-        }     
+        },     
+         "dashboard":{
+                "completed_tasks_count":"Completed Tasks Count",
+                "assigned_tasks_count":"Assigned Tasks Count"
+        }
 
 }

@@ -44,22 +44,11 @@
     gap: 12px;
     margin-block-end: 8px;
 }
-.post {
-    gap: 12px;
-    margin-block-end: 8px;
-}
 
-.dateSection {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 16px;
-    border: 1px solid var(--ink-200, );
-    border-radius: 10px;
-    background: var(--ink-100, );
-}
 
-.dateSection {
+
+
+.postSection {
     display: flex;
     align-items: center;
     gap: 18px;
@@ -82,21 +71,12 @@
     white-space: nowrap;
 }
 
-.dateBlock {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-width: 0;
-}
 
-.dateLabel {
-    color: var(--ink-500);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-}
 
-.dateValue {
+
+
+
+.post {
     color: var(--ink-900);
     font-size: 14px;
     font-weight: 600;
@@ -130,13 +110,9 @@
             padding: 12px 10px;
         }
         
-        .dateValue {
+        .post {
             font-size: 12px;
             white-space: normal;
         }
         
-        .dateLabel {
-            font-size: 9px;
-            letter-spacing: 0.4px;
-        }
 }
