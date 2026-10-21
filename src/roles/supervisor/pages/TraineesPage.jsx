@@ -5,12 +5,20 @@ import styles from "./Pages.module.css";
 
 import Button from "../../../components/ui/Button";
 import Loading from "../../../components/ui/Loading";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useAssigned from "../../../hooks/SupervisorHooks/useassigned";
+import EvaluationModal from "../components/EvaluationModal";
 export default function TraineesPage() {
   const { t } = useTranslation("hr");
 
-  const { myTrainees, loading, getMyTrainees } = useAssigned();
+  const[evaluationModal,setEvaluationModal ]=useState(false)
+  const { myTrainees, loading, getMyTrainees,createEvaluation ,loadingAction} = useAssigned();
+  const [traineeId,setTraineeId]=useState("")
+
+  const handelCreateEvaluation=(id)=>{
+    setTraineeId(id)
+    setEvaluationModal(true)
+  }
   console.log("my", myTrainees);
   useEffect(() => {
     getMyTrainees();
@@ -37,16 +45,31 @@ export default function TraineesPage() {
       header: t("interviews.supervisor"),
       render: (tr) => tr.supervisor,
     },
+      {
+      key: "action",
+      header: t("label.actions", { ns: "common" }),
+      render: (tr) => (<Button size="sm" onClick={()=>handelCreateEvaluation(tr.id)} > {t("evaluation.evaluation")} </Button>),
+    },
  
   ];
 
   return loading ? (
     <Loading />
   ) : (
-    <Table
+    <>
+
+        <Table
       columns={columns}
       rows={myTrainees}
       emptyText={t("trainees.empty")}
     />
+
+    {evaluationModal &&(
+      <EvaluationModal loading={loadingAction} trId={traineeId} onSubmit={createEvaluation} onClose={()=> setEvaluationModal(false)}/>
+    )}
+    
+    </>
+
+  
   );
 }

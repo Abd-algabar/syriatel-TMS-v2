@@ -17,7 +17,10 @@
     "vacations": "الإجازات",
     "evaluation": "التقييم",
     "notifications": "الاشعارات",
-    "programs": "البرامج "
+    "programs": "البرامج ",
+    "re_evaluation":"اعادة التقيم",
+    "tasks":"المهام",
+    "vacationRequest":" طلبات الاجازة"
   },
   "dashboard": {
     "latestApplicants": "أحدث المتقدمين",
@@ -96,13 +99,16 @@
     }
   },
   "attendance": {
+    "attendanceRegister":"سجل الغياب",
     "searchPlaceholder": "ابحث عن متدرب لاسترجاع سجل الغياب...",
     "trainee": "اسم المتدرب",
     "absenceDate": "تاريخ الغياب",
     "reason": "السبب",
-    "empty": "لا توجد سجلات مطابقة"
+    "empty": "لا توجد سجلات مطابقة",
+    "add":" اضافة غياب"
   },
   "announcements": {
+
     "listTitle": "الإعلانات العامة",
     "send": "إرسال إعلان",
     "target": "الجهة المستهدفة",
@@ -140,5 +146,33 @@
     "addPhase": "اضافة مرحلة",
     "phasesDescription": "وصف المرحلة",
     "phaseName": "اسم المرحلة"
+  },
+
+   "evaluation": {
+    "evaluation":"تقييم",
+    "createTitle": "إنشاء تقييم الطالب",
+    "editTitle": "تعديل تقييم الطالب",
+    "subtitle": "قيّم أداء المتدرب وسجّل ملاحظاتك حول تقدمه.",
+    "description": "الوصف العام للتقييم",
+    "descriptionPlaceholder": "اكتب ملخصاً عن أداء المتدرب...",
+    "indicatorsTitle": "مؤشرات التقييم",
+    "scoreRange": "الدرجة من 100",
+    "score": "الدرجة",
+    "notice": "الملاحظة",
+    "noticePlaceholder": "اكتب ملاحظتك حول هذا المؤشر...",
+    "cancel": "إلغاء",
+    "create": "إنشاء التقييم",
+    "saveChanges": "حفظ التعديلات",
+    "indicators": {
+      "taskPerformance": "أداء المهام",
+      "attendance": "الحضور",
+      "progress": "التقدم"
+    },
+    "errors": {
+      "description": "الوصف العام مطلوب.",
+      "score": "يجب أن تكون الدرجة رقماً بين 0 و100.",
+      "notice": "الملاحظة مطلوبة."
+    },
+    "viewAndREvaluation":"عرض واعادة التقيم"
   }
 }

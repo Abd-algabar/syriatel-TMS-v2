@@ -97,5 +97,68 @@ export const deleteTaskApi =async(taskId)=>{
   return response.data
 }
 
+export const updateTaskApi =async(taskId,body)=>{ 
+  const response = await api.put(`task/tasks/${taskId}`,body);
+  console.log(response.data)
+  return response.data
+}
+
+
+export const createEvaluationApi =async(id,body)=>{ 
+  const response = await api.post(`evaluation/trainee/${id}`,body);
+  console.log(response.data)
+  return response.data
+}
+
+export const getDashboardDataSupervisorApi = async () => {
+  const response = await api.get("dashboard/trainer");
+  // console.log(response.data)
+  return response.data;
+};
+
+
+export const getReevaluationRequestsApi = async () => {
+  const response = await api.get("evaluation/trainer/reevaluation_requests");
+  console.log(response.data)
+  return response.data;
+};
+
+
+export const createReEvaluationApi =async(id,body)=>{ 
+  const body2={
+    decision:"accepted",
+    ...body,
+    decision_note:"note",
+    evaluation_date:new Date().toString()
+  }
+  console.log(id)
+  console.log(body2)
+  const response = await api.patch(`evaluation/reevaluation_requests/${id}/decision`,body2);
+  // console.log(response.data)
+  return response.data
+}
+
+export const getVacationRequestsApi = async () => {
+  const response = await api.get("vacation_request/listForTrainer");
+  // console.log(response.data)
+  return response.data;
+};
+
+
+export const AcceptOrRejectVacationRequestApi =async(id,decision)=>{ 
+
+  const response = await api.patch(`vacation_request/decide/${id}`,{status: decision});
+  // console.log(response.data)
+  return response.data
+}
+
+export const getAllAbsentApi = async () => {
+  const response = await api.get("absence/findAllTrainer");
+  console.log(response.data)
+  return response.data;
+};
+
+
+
 
   
