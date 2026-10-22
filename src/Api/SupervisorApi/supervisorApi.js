@@ -153,11 +153,17 @@ export const AcceptOrRejectVacationRequestApi =async(id,decision)=>{
 }
 
 export const getAllAbsentApi = async () => {
-  const response = await api.get("absence/findAllTrainer");
+  const response = await api.get("absence/findAll");
   console.log(response.data)
   return response.data;
 };
 
+
+export const addAbsentApi = async (id,reason) => {
+  const response = await api.post(`absence/recordAbsence/${id}`,{reason});
+  console.log(response.data)
+  return response.data;
+};
 
 
 

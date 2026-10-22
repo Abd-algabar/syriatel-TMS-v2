@@ -11,3 +11,14 @@ export const getAllEvaluationApi = async () => {
   console.log(response.data)
   return response.data;
 };
+
+
+export const getAbsentAndSearchApi = async (name=null) => {
+  const response = await api.get("absence/findAll",{params:{
+      name:name ||null,
+      date :  name == null? null :new Date().toISOString().split('T')[0]
+
+  }});
+  console.log(response.data)
+  return response.data;
+};

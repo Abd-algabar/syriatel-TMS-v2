@@ -11,6 +11,7 @@ import styles from "./Pages.module.css";
 import Loading from "../../../components/ui/Loading";
 import { toast } from "react-toastify";
 import useAssigned from "../../../hooks/SupervisorHooks/useassigned";
+import { addAbsentApi } from "../../../Api/SupervisorApi/supervisorApi";
 export default function AbsentPage() {
   const { t } = useTranslation("hr");
 
@@ -18,14 +19,17 @@ export default function AbsentPage() {
   const [addLoading,setAddLoading]=useState(false)
   const { loading, getMyTrainees, myTrainees,getAllAbsent,absent } = useAssigned();
 
-  console.log("absent", absent)
+//   console.log("absent", absent)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setAddLoading(true)
     const formData = new FormData(e.currentTarget);
+    console.log(formData.get("traineeId"))
+
     try {
-      const data = await createSupervisors();
+      const data = await addAbsentApi(formData.get("traineeId"),formData.get("reason"));
       toast.success(data.message);
+      await getAllAbsent(true);
       setShowAdd(false);
     } catch (error) {
       const message =
@@ -42,11 +46,11 @@ export default function AbsentPage() {
     {
       key: "name",
       header: t("attendance.trainee"),
-      render: (s) => <strong className={styles.strong}>{s.name}</strong>,
+      render: (s) => <strong className={styles.strong}>{s.trainee_name}</strong>,
     },
-    { key: "email", header: t("attendance.reason") },
+    { key: "reason", header: t("attendance.reason")  ,render:(s)=> s.reason },
 
-    { key: "absenceDate", header: t("attendance.absenceDate") },
+    { key: "absenceDate", header: t("attendance.absenceDate") ,render:(s)=> s.date},
   ];
 
   useEffect(() => {
@@ -66,7 +70,7 @@ export default function AbsentPage() {
           </Button>
         }
       />
-      <Table columns={columns} rows={[1]} />
+      <Table columns={columns} rows={absent} />
 
       {showAdd && (
         <Modal title={t("supervisors.add")} onClose={() => setShowAdd(false)}>
