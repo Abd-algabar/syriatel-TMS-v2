@@ -22,3 +22,17 @@ export const getAbsentAndSearchApi = async (name=null) => {
   console.log(response.data)
   return response.data;
 };
+
+
+export const getAllAnnouncementsApi = async () => {
+  const response = await api.get("announcement/getSentByMe");
+  console.log(response.data)
+  return response.data;
+};
+
+
+export const sendAnnouncementsApi = async (body) => {
+  const response = await api.post("announcement/hrSendAnnouncement",body);
+  console.log(response.data)
+  return response.data;
+};

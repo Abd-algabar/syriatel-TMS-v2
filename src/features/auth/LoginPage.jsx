@@ -110,7 +110,7 @@ export default function LoginPage() {
                 type="email"
                 name="email"
                 required
-                defaultValue="nitzsche.emmalee@example.org"
+                defaultValue="training_team@syriatel.test"
               />
             </Field>
             <Field label={c("label.password")}>

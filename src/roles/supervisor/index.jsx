@@ -15,6 +15,7 @@ import TaskDetailsPage from "./pages/TaskDetailsPage";
 import Revaluation from './pages/Revaluation';
 import VacationRequest from './pages/VacationRequest';
 import AbsentPage from './pages/AbsentPage';
+import AnnouncementsPage from './pages/AnnouncementsPage';
 
 /**
  * وحدة دور الموارد البشرية.
@@ -36,6 +37,8 @@ export const supervisorModule = {
     { path: 're-evaluations', icon: CalendarArrowDown , labelKey: 'hr:nav.re_evaluation', Component:Revaluation  },
     { path: 'vacation-request', icon: Send , labelKey: 'hr:nav.vacationRequest', Component:VacationRequest  },
     { path: 'absent', icon: CalendarX  , labelKey: 'hr:nav.attendance', Component:AbsentPage },
+        { path: 'announcements', icon: Megaphone, labelKey: 'hr:nav.announcements', Component: AnnouncementsPage },
+
     // { path: 'evaluations', icon: Star, labelKey: 'hr:nav.evaluations', Component: EvaluationsPage },
 
   ],
