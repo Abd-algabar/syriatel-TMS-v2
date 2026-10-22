@@ -56,6 +56,7 @@ export default function ProgramDetails({ onAddTask, onTaskClick }) {
           <div className={styles.programInfo}>
             <h1>{program.title || program.name}</h1>
             <p>{program.description}</p>
+
             {program.deadline && (
               <div className={styles.deadline}>
                 <CalendarDays size={16} />
