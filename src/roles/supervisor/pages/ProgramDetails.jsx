@@ -153,6 +153,7 @@ export default function ProgramDetails({ onAddTask, onTaskClick }) {
         <CreateTaskModal
           onClose={() => setShowCreateTask(false)}
           phase={phase}
+          onUpdated={()=>getProgram(programId,true)}
         />
       )}
     </>

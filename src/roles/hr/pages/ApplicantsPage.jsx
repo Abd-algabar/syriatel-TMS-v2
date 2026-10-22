@@ -250,6 +250,7 @@ export default function ApplicantsPage() {
       {modal?.type === "schedule" && applicant && (
         <ScheduleInterviewModal applicant={applicant} onClose={closeModal} />
       )}
+      
     </>
   );
 }

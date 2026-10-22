@@ -17,19 +17,25 @@ import styles from "./TaskDetailsPage.module.css";
 import { useParams } from "react-router-dom";
 import useAssigned from "../../../hooks/SupervisorHooks/useassigned";
 import Loading from "../../../components/ui/Loading";
-import { createFeedbackApi } from "../../../Api/SupervisorApi/supervisorApi";
+import {
+  createFeedbackApi,
+  deleteTaskApi,
+} from "../../../Api/SupervisorApi/supervisorApi";
 import { toast } from "react-toastify";
 import { SquarePen } from "lucide-react";
 import Modal from "../../../components/ui/Modal";
-
+import CreateTaskModal from "../components/CreateTaskModal";
+import { useNavigate } from "react-router-dom";   
 export default function TaskDetailsPage({}) {
   const { t, i18n } = useTranslation();
   const { taskId } = useParams();
-
+const navigate = useNavigate();
   const { task, getTask, loading } = useAssigned();
   const [feedbackAction, setFeedbackAction] = useState(null);
   const [loadingAction, setLoadingAction] = useState();
   const [deleteModel, setDeleteModel] = useState(false);
+  const [loadingDelete, setLoadingDelete] = useState(false);
+  const [showUpdateTask,setShowUpdateTask]=useState(false)
 
   const normalizeStatus = (status) => {
     const statusMap = {
@@ -105,6 +111,22 @@ export default function TaskDetailsPage({}) {
     }
   };
 
+  const deleteTask = async () => {
+    setLoadingDelete(true);
+    try {
+      const data = await deleteTaskApi(task.id);
+      toast.success(data.message);
+      setDeleteModel(false);
+      navigate(-1);
+    } catch (error) {
+      const message =
+        error.response?.data?.message || error.message || "error in interview";
+      toast.error(Array.isArray(message) ? message.join("، ") : message);
+    } finally {
+      setLoadingDelete(false);
+    }
+  };
+
   useEffect(() => {
     getTask(taskId);
   }, []);
@@ -139,9 +161,13 @@ export default function TaskDetailsPage({}) {
             <div className="flex-s-p">
               <h2>{t("task.basicInfo", "المعلومات الأساسية")}</h2>
               <div className="flexCenter gap8">
-                <Button size="sm" icon={SquarePen} variant=""></Button>
+                <Button onClick={()=>setShowUpdateTask(true)} size="sm" icon={SquarePen} variant=""></Button>
 
-                <Button onClick={()=>setDeleteModel(true)} size="sm" icon={Trash}></Button>
+                <Button
+                  onClick={() => setDeleteModel(true)}
+                  size="sm"
+                  icon={Trash}
+                ></Button>
               </div>
             </div>
 
@@ -313,52 +339,18 @@ export default function TaskDetailsPage({}) {
               {t("action.cancel", { ns: "common" })}
             </Button>
 
-            <Button
-              onClick={async () => {
-                toast.success(await deleteProgram(deleteID));
-                setDeleteModel(false);
-              }}
-              loading={loadingAction == deleteID}
-              size="sm"
-            >
+            <Button loading={loadingDelete} onClick={deleteTask} size="sm">
               {t("modal.delete", { ns: "common" })}
             </Button>
           </div>
         </Modal>
       )}
+
+      {showUpdateTask&&(
+        <CreateTaskModal task={task} onClose={()=>setShowUpdateTask(false)} onUpdated={() => getTask(taskId,true)}/>
+      )}
     </>
   );
 }
 
-// const task = {
-//   _id: "task-123",
 
-//   name: "Implement Login API",
-
-//   description:
-//     "Create authentication endpoints using NestJS and JWT. Ensure that users can log in securely and receive an access token.",
-
-//   deadline: "2026-12-20",
-
-//   trainee: {
-//     _id: "4",
-//     fullname: "Ahmad Ali",
-//   },
-
-//   instructions:
-//     "1. Create the login endpoint.\n2. Validate user credentials.\n3. Generate a JWT access token.\n4. Handle invalid credentials and return appropriate error messages.\n5. Test the endpoint using Postman.",
-
-//   attachments: [
-//     "https://docs.nestjs.com/security/authentication",
-//     "https://jwt.io/introduction",
-//   ],
-
-//   priority: 3,
-
-//   status: "SUBMITTED",
-
-//   submission: {
-//     fileUrl: "https://example.com/submissions/login-api-report.pdf",
-//     fileName: "login-api-report.pdf",
-//   },
-// };

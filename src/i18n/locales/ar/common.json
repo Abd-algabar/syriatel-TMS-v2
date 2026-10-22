@@ -11,7 +11,8 @@
     "search": "بحث",
     "create": "إنشاء",
     "cancel":"الغاء",
-    "update":"تعديل"
+    "update":"تعديل",
+    "add":"اضافة"
   },
   "label": {
     "name": "الاسم",
@@ -43,6 +44,7 @@
     "note": "الملاحظات",
     "rating":"التقيم",
     "fire":"فصل"
+    
     
   },
   "language": { "switchTo": "English" },
