@@ -127,7 +127,7 @@ export default function ApplicantsPage() {
     },
   ];
 
-  console.log("applicants", applicants);
+  // console.log("applicants", applicants);
   return loading ? (
     <Loading />
   ) : (

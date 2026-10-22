@@ -136,6 +136,8 @@ export default function EvaluationModal({
       })),
     };
 
+    console.log("payload",payload)
+
     try {
             await onSubmit(trId,payload);
              onClose()

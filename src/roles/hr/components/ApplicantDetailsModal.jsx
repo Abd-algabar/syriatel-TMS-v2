@@ -13,7 +13,7 @@ export default function ApplicantDetailsModal({
 }) {
   const { t } = useTranslation("hr");
   const c = (key) => t(key, { ns: "common" });
-  console.log("Applicant", applicant);
+  // console.log("Applicant", applicant);
   return (
     <Modal
       title={t("applicants.detailsTitle", { name: applicant.full_name })}
@@ -82,7 +82,7 @@ export default function ApplicantDetailsModal({
 
          <div>
           <dt>{c("label.SubmissionDate")}</dt>
-          <dd>{ new Date(applicant.submission_date).toLocaleDateString() ||"empty "}</dd>
+          <dd>{ new Date(applicant.submission_date).toISOString().split('T')[0] ||"empty "}</dd>
         </div>
       </dl>
 
@@ -92,7 +92,7 @@ export default function ApplicantDetailsModal({
           <span key={f} className={styles.file}><FileText size={14} /> {f}</span>
         ))} */}
         <Link to={applicant.cv} target="_blank">
-        {console.log("cv:",applicant.cv)}
+        {/* {console.log("cv:",applicant.cv)} */}
           <span className={styles.file}>
             <FileText size={14} /> {c("label.cv")}
           </span>

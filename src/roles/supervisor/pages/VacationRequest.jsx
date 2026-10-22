@@ -10,6 +10,7 @@ import useAssigned from "../../../hooks/SupervisorHooks/useassigned";
 import { Check, X } from "lucide-react";
 import { AcceptOrRejectVacationRequestApi } from "../../../Api/SupervisorApi/supervisorApi";
 import { toast } from "react-toastify";
+import StatusBadge from "../../hr/components/StatusBadge";
 export default function VacationRequest() {
   const { t } = useTranslation("hr");
 
@@ -38,6 +39,7 @@ export default function VacationRequest() {
 
   };
  
+  console.log(VacationRequests)
   useEffect(() => {
     getVacationRequests();
   }, []);
@@ -47,6 +49,14 @@ export default function VacationRequest() {
       header: t("label.name", { ns: "common" }),
       render: (tr) => (
         <strong className={styles.strong}>{tr.trainee.name}</strong>
+      ),
+    },
+
+        {
+      key: "status",
+     header: t("label.status", { ns: "common" }),
+      render: (tr) => (
+        <StatusBadge kind="applicant" status={tr.status} />
       ),
     },
 
@@ -70,7 +80,7 @@ export default function VacationRequest() {
     {
       key: "action",
       header: t("label.actions", { ns: "common" }),
-      render: (tr) => (
+      render: (tr) => tr.status =="pending" ? (
         <div className="flexCenter gap8">
           <Button
             variant="success"
@@ -87,7 +97,7 @@ export default function VacationRequest() {
             loading ={traineeId==`${tr.id}-rejected`}
           ></Button>
         </div>
-      ),
+      ) : "----",
     },
   ];
 
