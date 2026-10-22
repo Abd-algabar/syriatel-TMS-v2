@@ -19,7 +19,7 @@ export default function Revaluation () {
     setRequest(req)
     setEvaluationModal(true)
   }
-  console.log("my", ReevaluationRequests);
+  // console.log("my", ReevaluationRequests);
   useEffect(() => {
     getReevaluationRequests()
   }, []);
@@ -43,7 +43,7 @@ export default function Revaluation () {
     {
       key: "score",
       header: t("evaluation.score", { ns: "hr" }),
-      render: (tr) => tr.evaluation.score ?? "—",
+      render: (tr) => tr?.evaluation?.score ?? "—",
     },
     
       {

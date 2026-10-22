@@ -166,5 +166,18 @@ export const addAbsentApi = async (id,reason) => {
 };
 
 
+export const sendAnnouncementsSupervisorApi = async (body) => {
+  const response = await api.post("announcement/trainerSendAnnouncement",body);
+  console.log(response.data)
+  return response.data;
+};
+
+export const getAllAnnouncementsSupervisorApi = async () => {
+  const response = await api.get("announcement/getSentByMe");
+  console.log(response.data)
+  return response.data;
+};
+
+
 
   
