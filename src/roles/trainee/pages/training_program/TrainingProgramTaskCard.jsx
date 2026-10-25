@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+// import {getTaskDetails} from "../../../../Api/Trainee/trainingProgramApi"
 import {
   CalendarDays,
   UserRound,
@@ -14,7 +15,6 @@ import styles from "./TrainingProgramTaskCard.module.css";
 
 export default function TrainingProgramTaskCard({ task }) {
   const { t, i18n } = useTranslation();
-
   if (!task) return null;
 
   const statusMap = {
@@ -49,7 +49,7 @@ export default function TrainingProgramTaskCard({ task }) {
 
   return (
     <Link
-      to={`/supervisor/tasks/details/${task.id}`}
+      to={`/trainee/tasks/details/${task.id}`}
       className={styles.card}
       aria-label={`${t("task.viewDetails")}: ${task.name}`}
     >

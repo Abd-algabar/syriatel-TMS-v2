@@ -26,7 +26,7 @@ function ProgressBar({
   return (
     <div className={styles.progress}>
       <div className={styles["progress-track"]} style={{ height }}>
-        <ResponsiveContainer width="100%" height="100%">
+        <ResponsiveContainer width="100%" height="100%" >
           <BarChart
             data={data}
             layout="vertical"
@@ -35,6 +35,7 @@ function ProgressBar({
             <XAxis type="number" domain={[0, 100]} hide />
             <YAxis type="category" dataKey="name" hide />
             <Bar
+
               dataKey="completed"
               stackId="progress"
               radius={[8, 0, 0, 8]}

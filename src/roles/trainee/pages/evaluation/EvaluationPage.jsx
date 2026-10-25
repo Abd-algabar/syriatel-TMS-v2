@@ -15,6 +15,7 @@ export default function EvaluationPage(){
     const [reEvaluationForm,setRevaluationForm]=useState(false);
     const [loadingAction,setLoadingAction]= useState(false);
     const [reEvaluationState,setReEvaluationState]= useState(false);
+    const [reEvaluationAvaliability,setReEvaluationAvaliability]= useState(false);
     const [reEvaluationReason,setReEvaluationReason]= useState("");
     const [evaluationScore, setEvaluationScore] = useState({}); 
     const [evaluationIndicators, setEvaluationIndicators] = useState([]); 
@@ -25,15 +26,15 @@ export default function EvaluationPage(){
         setLoadingAction(true);
         const response = await getTraineeEvaluation();
         const evaluationData = response.data;
-        const indicators = evaluationData?.indicators ?? [];
-
+        const indicators = evaluationData?.evaluation.indicators ?? [];
         setEvaluationIndicators(
           Array.isArray(indicators) ? indicators : []
         );
         setEvaluationScore({
-          score: evaluationData?.score ?? "",
-          notice: evaluationData?.description ?? "",
+          score: evaluationData?.evaluation.score ?? "",
+          notice: evaluationData?.evaluation.description ?? "",
         });
+        setReEvaluationAvaliability(evaluationData?.reevaluation ?? false)
       } catch (error) {
         console.error("Failed to fetch evaluation:", error);
       } finally {
@@ -52,8 +53,8 @@ export default function EvaluationPage(){
       setRevaluationForm(false)
       toast.success(response.message)
     }catch(error){
-        console.error("Failed to send re-evaluation request:", error);
         toast.error(error.message)
+        console.error("Failed to send re-evaluation request:", error);
     }finally{
       setReEvaluationState(false)
     }
@@ -114,7 +115,7 @@ export default function EvaluationPage(){
                     />
                   </div>
                 </section>
-                <section className={styles.indicatorsSection}>
+                {evaluationIndicators.length >0 && <section className={styles.indicatorsSection}>
                 <div className={styles.sectionHeader}>
                   <h3>{t("evaluation.performance")}</h3>
                 </div>
@@ -132,15 +133,15 @@ export default function EvaluationPage(){
                   </div>
                   ))}
                 </div>
-              </section>
-              <div className={styles.actions}>
+              </section>}
+              {reEvaluationAvaliability && <div className={styles.actions}>
                 <Button
                   className={styles.reEvaluateRequest}
                   onClick={() => setRevaluationForm(true)}
                 >
                   {t("evaluation.reEvaluate")}
                 </Button>
-              </div>
+              </div>}
               {reEvaluationForm && 
               reEvaluationFormComponent 
         }

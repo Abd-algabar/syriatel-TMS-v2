@@ -47,7 +47,18 @@
         "pending": "قيد الانتظار",
         "accepted": "مقبول",
         "rejected": "مرفوض",
-        "addRequest":"اضافة طلب"
+        "addRequest":"اضافة طلب",
+        "startDate":"تاريخ البدء",
+        "endDate":"تاريخ الانتهاء",
+        "incorrectDate":"تاريخ غير صحيح",
+        "cancelVacation":"الغاء الاجازة",
+        "cancel":"الغاء",
+        "areYouSure":"هل انت واثق",
+        "cancelRequest":"الغاء الاجازة",
+        "update":"تعديل"
+
+
+
         },
         "announcement":{
         "announcement":"اعلان"
