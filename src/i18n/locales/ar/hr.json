@@ -123,7 +123,40 @@
     "acceptanceRate": "نسبة قبول الطلبات",
     "totalInterviews": "إجمالي المقابلات",
     "exportPdf": "تصدير تقرير شامل PDF",
-    "exporting": "جاري تصدير التقرير بصيغة PDF..."
+    "exporting": "جاري تصدير التقرير بصيغة PDF...",
+     
+    "subtitle": "عرض إحصائيات دورة التدريب وتنزيلها بصيغة PDF",
+    "generate": "جلب التقرير وتنزيل PDF",
+    "refresh": "تحديث وتنزيل التقرير",
+    "generating": "جارٍ إنشاء التقرير...",
+    "loading": "جارٍ جلب البيانات وإنشاء ملف PDF...",
+    "emptyTitle": "لا يوجد تقرير معروض",
+    "emptyDescription": "اضغط على الزر لجلب إحصائيات دورة التدريب وإنشاء ملف PDF.",
+    "downloadSuccess": "تم إنشاء التقرير وتنزيله بنجاح",
+    "downloadError": "تعذر جلب التقرير أو إنشاء ملف PDF",
+    "trainingProgram": "البرنامج التدريبي",
+    "generatedAt": "تاريخ إنشاء التقرير",
+    "pdfTitle": "تقرير دورة التدريب",
+    "pdfSubtitle": "تقرير إحصائي لبرنامج التدريب الحالي",
+    "pdfFooter": "تم إنشاء هذا التقرير إلكترونياً من نظام إدارة التدريب TMS.",
+    "notSpecified": "غير محدد",
+    "indicator": "المؤشر",
+    "count": "العدد",
+    "groups": {
+      "applications": "طلبات التقديم",
+      "trainees": "المتدربون",
+      "organization": "الهيكل التنظيمي"
+    },
+    "fields": {
+      "total_applications": "إجمالي طلبات التقديم",
+      "accepted_applications": "الطلبات المقبولة",
+      "rejected_applications": "الطلبات المرفوضة",
+      "participating_trainees": "المتدربون المشاركون",
+      "completed_trainees": "المتدربون الذين أتموا التدريب",
+      "fired_trainees": "المتدربون المفصولون",
+      "total_departments": "إجمالي الأقسام",
+      "active_supervisor_accounts": "حسابات المشرفين النشطة"
+    }
   },
   "registration": {
     "title": "انشاء دورة جديدة",
@@ -175,4 +208,7 @@
     },
     "viewAndREvaluation":"عرض واعادة التقيم"
   }
+
+
+ 
 }

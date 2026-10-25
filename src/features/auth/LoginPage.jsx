@@ -10,6 +10,8 @@ import { useAuth } from "../../context/AuthContext";
 import { loginRoles, roleRegistry, ROLES } from "../../roles";
 import styles from "./LoginPage.module.css";
 import { toast } from "react-toastify";
+import { requestForToken } from "../../firebase/firebase";
+import {registerNotificationTokenApi} from '../../Api/notificationApi';
 // import  roleRegistry  from "../../roles/index";
 
 export default function LoginPage() {
@@ -19,6 +21,8 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [role, setRole] = useState(ROLES.HR);
   const [loading, setLoading] = useState(false);
+
+  const [token, setToken] = useState("");
 
   if (user)
     return (
@@ -43,6 +47,29 @@ export default function LoginPage() {
       if (!module) {
         throw new Error("هذا الدور غير مدعوم حاليًا");
       }
+
+      const getToken = async () => {
+        const permission = await Notification.requestPermission();
+        if (permission === "granted") {
+          const token = await requestForToken();
+          if (token) {
+            console.log("notification Token :", token);
+            setToken(token);
+            try {
+              await registerNotificationTokenApi(token);
+              console.log("Notification token registered successfully");
+            } catch (error) {
+              console.error(
+                "Failed to register notification token:",
+                error.response?.data || error.message,
+              );
+            }
+          }
+        }
+      };
+
+      getToken();
+
       navigate(module.basePath, {
         replace: true,
       });

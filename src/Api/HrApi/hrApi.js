@@ -36,3 +36,11 @@ export const sendAnnouncementsApi = async (body) => {
   console.log(response.data)
   return response.data;
 };
+
+
+export const getReportApi = async () => {
+  const response = await api.get("reports/training_cycle");
+  console.log(response.data)
+  const data = response?.data?.data ?? response?.data ?? response;
+  return data;
+};
