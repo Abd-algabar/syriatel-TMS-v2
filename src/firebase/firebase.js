@@ -41,4 +41,3 @@ onMessage(messaging, ({ notification }) => {
   });
 });
 
-   

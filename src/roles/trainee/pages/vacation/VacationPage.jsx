@@ -4,7 +4,7 @@ import Button from "../../../../components/ui/Button.jsx"
 import Modal from "../../../../components/ui/Modal.jsx"
 import styles from "./VacationPage.module.css";
 import Loading from "../../../../components/ui/Loading";
-import {getVacationsRequests,requestVacation,canceltVacation} from "../../../../Api/Trainee/vacationApi.js"
+import {getVacationsRequests,requestVacation,canceltVacation,updateVacation} from "../../../../Api/Trainee/vacationApi.js"
 import {Field,Input} from "../../../../components/ui/Field.jsx"
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -26,7 +26,7 @@ export default function VacationPage() {
       return "amber";
   }
 };
-  const canceledVacationId= useRef(-1);
+  const vacationId= useRef(-1);
   const { t } = useTranslation("trainee");
   const [vacationRequest , setVacationRequest]=useState({
     reason: "",
@@ -56,38 +56,7 @@ export default function VacationPage() {
     getVacatoinsList()
   },[])
 
-  const sendVacationRequest = async () => {
-  const { reason, start_date, end_date } = vacationRequest;
-
-  if (!reason.trim() || !start_date || !end_date) {
-    toast.warn(t("vacation.requiredFields"));
-    return;
-  }
-
-  if (start_date > end_date) {
-    toast.warn(t("vacation.incorrectDate"));
-    return;
-  }
-
-  try {
-    setSendingVacationRequest(true);
-
-    const response = await requestVacation(vacationRequest);
-
-    toast.success(response.message);
-    setAddVacation(false);
-
-    await getVacatoinsList();
-  } catch (error) {
-    toast.error(
-      error?.response?.data?.message ||
-      error?.message ||
-      t("common.error")
-    );
-  } finally {
-    setSendingVacationRequest(false);
-  }
-};
+  
 
   const getToday = () => {
   const date = new Date();
@@ -101,10 +70,11 @@ export default function VacationPage() {
 
   const  openCancelVacation=(vacationId)=>{
     setCancelVacationState(true)
-    canceledVacationId.current=vacationId
+    vacationId.current=vacationId
   }
 
   const openUpdateVacation =(vacationData)=>{
+    vacationId.current = vacationData.id
     setVacationRequest({
           reason: vacationData.reason,
           start_date: vacationData.start_date.split(" ")[0],
@@ -112,10 +82,41 @@ export default function VacationPage() {
     })
     setAddVacation(true);
   }
+    const sendActionBasedOnData=(e)=>{
+      e.preventDefault(); 
+      
+      vacationRequest.reason ===""?
+      sendVacationRequest():
+      sendUpdateVacation()
+    }
+    const sendUpdateVacation = async ()=>{
+      const { reason, start_date, end_date } = vacationRequest;
+      if (!reason.trim() || !start_date || !end_date) {
+      toast.warn(t("vacation.requiredFields"));
+      return;
+    }
+    if (start_date > end_date) {
+      toast.warn(t("vacation.incorrectDate"));
+      return;
+    }
+      try{
+        setSendingVacationRequest(true)
+        const response = await updateVacation(vacationId.current,vacationRequest)
+        toast.success(response.message)
+        setAddVacation(false)
+        await getVacatoinsList();
+
+      }catch(error){
+        toast.error(error.message)
+      }finally{
+        setSendingVacationRequest(false)
+      }
+    }
+
     const sendCancelVacation =async ()=>{
     try{
       setLoadingCancelVacationState(true)
-      const response = await canceltVacation(canceledVacationId.current)
+      const response = await canceltVacation(vacationId.current)
       toast.success(response.message)
       setCancelVacationState(false)
       await getVacatoinsList()
@@ -125,6 +126,32 @@ export default function VacationPage() {
       setLoadingCancelVacationState(false)
     }
   }
+
+  const sendVacationRequest = async () => {
+  const { reason, start_date, end_date } = vacationRequest;
+
+  if (!reason.trim() || !start_date || !end_date) {
+    toast.warn(t("vacation.requiredFields"));
+    return;
+  }
+  if (start_date > end_date) {
+    toast.warn(t("vacation.incorrectDate"));
+    return;
+  }
+  try {
+    setSendingVacationRequest(true);
+    const response = await requestVacation(vacationRequest);
+    toast.success(response.message);
+    setAddVacation(false);
+
+    await getVacatoinsList();
+  } catch (error) {
+    toast.error(error.message);
+  } finally {
+    setSendingVacationRequest(false);
+  }
+};
+
   const showCancelVacation = (status,startDate)=>{
     const currentDate = getToday()
     return (status === "pending" && currentDate < startDate)
@@ -152,7 +179,7 @@ export default function VacationPage() {
           <Modal 
           title={t("vacation.vacationRequest")}
           onClose={()=>setAddVacation(false)}>
-            <form onSubmit={(e) => { e.preventDefault(); sendVacationRequest(); }}>
+            <form onSubmit={(e) => sendActionBasedOnData(e)}>
               
                 <Field key={"reason"}
                 label={t("evaluation.reason")}
@@ -266,8 +293,7 @@ export default function VacationPage() {
         
       </div>
         {vacationState && addVacationFormComponent}
-        {cancelVacationState && cancelVacationModel }
-
+        {cancelVacationState && cancelVacationModel}
     </section></>
   );
 }
