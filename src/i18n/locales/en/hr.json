@@ -122,7 +122,40 @@
     "acceptanceRate": "Acceptance rate",
     "totalInterviews": "Total interviews",
     "exportPdf": "Export full report (PDF)",
-    "exporting": "Exporting the PDF report..."
+    "exporting": "Exporting the PDF report...",
+     
+    "subtitle": "View training cycle statistics and download them as PDF",
+    "generate": "Fetch Report & Download PDF",
+    "refresh": "Refresh & Download Report",
+    "generating": "Generating report...",
+    "loading": "Fetching data and generating PDF...",
+    "emptyTitle": "No Report Available",
+    "emptyDescription": "Click the button to fetch training cycle statistics and generate a PDF.",
+    "downloadSuccess": "Report generated and downloaded successfully",
+    "downloadError": "Failed to fetch the report or generate the PDF",
+    "trainingProgram": "Training Program",
+    "generatedAt": "Report Generation Date",
+    "pdfTitle": "Training Cycle Report",
+    "pdfSubtitle": "Statistical Report for the Current Training Program",
+    "pdfFooter": "This report was generated electronically by the TMS Training Management System.",
+    "notSpecified": "Not specified",
+    "indicator": "Metric",
+    "count": "Count",
+    "groups": {
+      "applications": "Applications",
+      "trainees": "Trainees",
+      "organization": "Organization"
+    },
+    "fields": {
+      "total_applications": "Total Applications",
+      "accepted_applications": "Accepted Applications",
+      "rejected_applications": "Rejected Applications",
+      "participating_trainees": "Participating Trainees",
+      "completed_trainees": "Completed Trainees",
+      "fired_trainees": "Dismissed Trainees",
+      "total_departments": "Total Departments",
+      "active_supervisor_accounts": "Active Supervisor Accounts"
+    }
   },
   "registration": {
     "title": "Create a new course",

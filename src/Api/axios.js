@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  // baseURL: "https://syriateltms-production.up.railway.app/api/v1",
-  baseURL: "http://10.140.197.73:8000/api/v1",
+  baseURL: "https://syriateltms-production.up.railway.app/api/v1",
+  // baseURL: "http://10.140.197.73:8000/api/v1",
 
   timeout: 30000,
 });
@@ -35,5 +35,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
 
 export default api;
