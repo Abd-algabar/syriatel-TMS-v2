@@ -1,80 +1,83 @@
-import Card from '../../../../components/ui/Card.jsx';
-import Badge from '../../../../components/ui/Badge.jsx';
+import { Clock, Megaphone } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styles from "./AnnouncementPage.module.css";
-export default function AnnouncementPage(){
-  const { t } = useTranslation("trainee");
-    const announcements=
-{
-  "announcements": [
-    {
-      "id": 1,
-      "title": "Training Schedule Update",
-      "post": "The weekly training schedule has been updated. Please review the new timetable before attending your sessions.",
-      "start_date": "2026-10-12",
-      "end_date": "2026-10-19",
-      "publisher": "HR Training Team"
-    },
-    {
-      "id": 2,
-      "title": "Backend Development Workshop",
-      "post": "A workshop on Laravel REST API development will be held next week. All backend trainees are encouraged to participate.",
-      "start_date": "2026-10-15",
-      "end_date": "2026-10-22",
-      "publisher": "Ahmed Hassan"
-    },
-    {
-      "id": 3,
-      "title": "Task Submission Deadline",
-      "post": "All trainees must submit their assigned tasks and supporting evidence before the deadline. Late submissions may affect progress evaluations.",
-      "start_date": "2026-10-10",
-      "end_date": "2026-10-14",
-      "publisher": "HR Training Team"
-    },
-    {
-      "id": 4,
-      "title": "Monthly Progress Evaluation",
-      "post": "Monthly progress evaluations will begin soon. Ensure that your tasks and daily progress records are up to date.",
-      "start_date": "2026-10-20",
-      "end_date": "2026-10-27",
-      "publisher": "Sara Khaled"
-    },
-    {
-      "id": 5,
-      "title": "System Maintenance Notice",
-      "post": "The Training Management System will be temporarily unavailable during scheduled maintenance. Please save your work in advance.",
-      "start_date": "2026-10-25",
-      "end_date": "2026-10-25",
-      "publisher": "System Administrator"
-    }
-  ]
-}
+import Badge from "../../../../components/ui/Badge";
+import Button from "../../../../components/ui/Button";
+import Card from "../../../../components/ui/Card";
+import { Field, Input, Select, Textarea } from "../../../../components/ui/Field";
+import form from "../../../../components/ui/Form.module.css";
+import Modal from "../../../../components/ui/Modal";
+import PageHeader from "../../../../components/ui/PageHeader";
 
-    return (
-        <>
-          <section className={styles.page}>
-            <header>
-              <span className={styles.count}>
-                      {announcements.announcements.length} {t("announcement.announcement")}
-              </span>
-            </header>
-            <div className={styles.list}>
-                {announcements['announcements'].map((a) => (
-                    <Card key={a.id} className={styles.card}>
-                        <div className={styles.top}>
-                        <h4>{a.title}</h4>
-                          <Badge>{a.publisher}</Badge>
-                        </div>
-                        <div className={styles.postSection}>
-                          <span className={styles.post}>
-                              {a.post}
-                          </span>
-                    </div>
-                        
-                        
-                    </Card>
-                ),)}
+import styles from "./AnnouncementPage.module.css";
+import useAnnouncements from "../../../../hooks/useAnnouncements.js";
+import Loading from "../../../../components/ui/Loading.jsx";
+export default function AnnouncementsPage() {
+  const { t } = useTranslation("hr");
+  const {
+    announcements,
+    loading,
+    loadingCreate,
+    refreshing,
+    getAnnouncementsTrainee,
+  } = useAnnouncements();
+
+  const [showAdd, setShowAdd] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+
+    await sendAnnouncementsSupervisor({
+      title: data.get("title"),
+      description: data.get("details"),
+    });
+
+    setShowAdd(false);
+  };
+
+  useEffect(() => {
+    getAnnouncementsTrainee();
+  }, []);
+
+  return loading ? (
+    <Loading />
+  ) : (
+    <>
+    
+      <div className={styles.list}>
+        {announcements.map((a) => (
+          <Card key={a.id}>
+            <div className={styles.top}>
+              <h4>{a.title}</h4>
+              <Badge>{a.publisher.name}</Badge>
             </div>
-          </section>
-        </>);
+            <p className={styles.details}>{a.description}</p>
+            <span className={styles.date}>
+              <Clock size={14} /> {a.announced_at}
+            </span>
+          </Card>
+        ))}
+      </div>
+
+      {showAdd && (
+        <Modal
+          title={t("announcements.send")}
+          onClose={() => setShowAdd(false)}
+        >
+          <form className={form.form} onSubmit={handleSubmit}>
+            <Field label={t("announcements.title")}>
+              <Input name="title" required />
+            </Field>
+            <Field label={t("announcements.details")}>
+              <Textarea name="details" required />
+            </Field>
+            <Button type="submit" loading={loadingCreate}>
+              {t("action.save", { ns: "common" })}
+            </Button>
+          </form>
+        </Modal>
+      )}
+    </>
+  );
 }

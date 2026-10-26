@@ -34,7 +34,7 @@
             "send": "Send",
             "generalEvaluation": "General Evaluation",
             "attendance": "Attendance",
-            "performance": "Performance",
+            "taskPerformance": "Performance",
             "teamWork": "Teamwork",
             "reEvaluate": "Re-Evaluate"
             },
@@ -48,15 +48,27 @@
         "pending": "Pending",
         "accepted": "Accepted",
         "rejected": "Rejected",
-        "addRequest":"Add Request"
+        "addRequest":"Add Request",
+        "startDate":"Start Date",
+        "endDate":"End Date",
+        "incorrectDate":"Incorrect Date",
+        "cancelVacation":"Cancel Vacation",
+        "cancel":"cancel",
+        "areYouSure":"Are you Sure?",
+        "cancelRequest":"Cancel Request",
+        "update":"Update"
+
+
 
         }   ,
         "announcement":{
         "announcement":"Announcement"
         },     
-         "dashboard":{
+        "dashboard":{
                 "completed_tasks_count":"Completed Tasks Count",
                 "assigned_tasks_count":"Assigned Tasks Count"
+
         }
+
 
 }

@@ -3,61 +3,17 @@ import Badge from "../../../../components/ui/Badge.jsx";
 import Button from "../../../../components/ui/Button.jsx"
 import Modal from "../../../../components/ui/Modal.jsx"
 import styles from "./VacationPage.module.css";
+import Loading from "../../../../components/ui/Loading";
+import {getVacationsRequests,requestVacation,canceltVacation,updateVacation} from "../../../../Api/Trainee/vacationApi.js"
 import {Field,Input} from "../../../../components/ui/Field.jsx"
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { useEffect,useState,useRef } from "react";
+import { toast } from "react-toastify";
+
 
 export default function VacationPage() {
-  const vacations = {
-  vacationRequests: [
-    {
-      id: 1,
-      traineeId: 101,
-      reason: "Family vacation",
-      startDate: "2026-10-20",
-      endDate: "2026-10-25",
-      submissionDate: "2026-10-10",
-      state: "pending",
-    },
-    {
-      id: 2,
-      traineeId: 102,
-      reason: "Medical reasons",
-      startDate: "2026-10-15",
-      endDate: "2026-10-17",
-      submissionDate: "2026-10-05",
-      state: "accepted",
-    },
-    {
-      id: 3,
-      traineeId: 103,
-      reason: "Personal commitments",
-      startDate: "2026-10-22",
-      endDate: "2026-10-23",
-      submissionDate: "2026-10-08",
-      state: "rejected",
-    },
-    {
-      id: 4,
-      traineeId: 101,
-      reason: "Family event",
-      startDate: "2026-11-01",
-      endDate: "2026-11-03",
-      submissionDate: "2026-10-12",
-      state: "pending",
-    },
-    {
-      id: 5,
-      traineeId: 104,
-      reason: "Personal travel",
-      startDate: "2026-11-10",
-      endDate: "2026-11-15",
-      submissionDate: "2026-10-11",
-      state: "accepted",
-    },
-  ],
-};
+
   const getBadgeTone = (state) => {
   switch (state) {
     case "accepted":
@@ -70,8 +26,38 @@ export default function VacationPage() {
       return "amber";
   }
 };
+  const vacationId= useRef(-1);
   const { t } = useTranslation("trainee");
+  const [vacationRequest , setVacationRequest]=useState({
+    reason: "",
+  start_date: "",
+  end_date: "",
+  })
+  const [sendingVacationRequest , setSendingVacationRequest]=useState(false)
+  const [vacationsList,setVacationsList] = useState([])
   const[vacationState,setAddVacation]=useState(false)
+  const[cancelVacationState,setCancelVacationState]=useState(false)
+  const[loadingCancelVacationState,setLoadingCancelVacationState]=useState(false)
+  const[loadingAction,setLoadingAction]=useState(false)
+  const getVacatoinsList = async()=>{
+      try{
+        setLoadingAction(true)
+        const response = await getVacationsRequests()
+        const data= response.data;
+        setVacationsList(Array.isArray(data) ? data :[])
+        
+      }catch(error){
+        toast.error(error.message)
+      }finally{
+        setLoadingAction(false)
+      }
+    }
+  useEffect(()=>{
+    getVacatoinsList()
+  },[])
+
+  
+
   const getToday = () => {
   const date = new Date();
   date.setDate(date.getDate()+1)
@@ -81,36 +67,164 @@ export default function VacationPage() {
 
   return `${year}-${month}-${day}`;
 };
+
+  const  openCancelVacation=(vacationId)=>{
+    setCancelVacationState(true)
+    vacationId.current=vacationId
+  }
+
+  const openUpdateVacation =(vacationData)=>{
+    vacationId.current = vacationData.id
+    setVacationRequest({
+          reason: vacationData.reason,
+          start_date: vacationData.start_date.split(" ")[0],
+          end_date: vacationData.end_date.split(" ")[0],
+    })
+    setAddVacation(true);
+  }
+    const sendActionBasedOnData=(e)=>{
+      e.preventDefault(); 
+      
+      vacationRequest.reason ===""?
+      sendVacationRequest():
+      sendUpdateVacation()
+    }
+    const sendUpdateVacation = async ()=>{
+      const { reason, start_date, end_date } = vacationRequest;
+      if (!reason.trim() || !start_date || !end_date) {
+      toast.warn(t("vacation.requiredFields"));
+      return;
+    }
+    if (start_date > end_date) {
+      toast.warn(t("vacation.incorrectDate"));
+      return;
+    }
+      try{
+        setSendingVacationRequest(true)
+        const response = await updateVacation(vacationId.current,vacationRequest)
+        toast.success(response.message)
+        setAddVacation(false)
+        await getVacatoinsList();
+
+      }catch(error){
+        toast.error(error.message)
+      }finally{
+        setSendingVacationRequest(false)
+      }
+    }
+
+    const sendCancelVacation =async ()=>{
+    try{
+      setLoadingCancelVacationState(true)
+      const response = await canceltVacation(vacationId.current)
+      toast.success(response.message)
+      setCancelVacationState(false)
+      await getVacatoinsList()
+    }catch(error){
+      toast.error(error.message)
+    }finally{
+      setLoadingCancelVacationState(false)
+    }
+  }
+
+  const sendVacationRequest = async () => {
+  const { reason, start_date, end_date } = vacationRequest;
+
+  if (!reason.trim() || !start_date || !end_date) {
+    toast.warn(t("vacation.requiredFields"));
+    return;
+  }
+  if (start_date > end_date) {
+    toast.warn(t("vacation.incorrectDate"));
+    return;
+  }
+  try {
+    setSendingVacationRequest(true);
+    const response = await requestVacation(vacationRequest);
+    toast.success(response.message);
+    setAddVacation(false);
+
+    await getVacatoinsList();
+  } catch (error) {
+    toast.error(error.message);
+  } finally {
+    setSendingVacationRequest(false);
+  }
+};
+
+  const showCancelVacation = (status,startDate)=>{
+    const currentDate = getToday()
+    return (status === "pending" && currentDate < startDate)
+  }
+  const cancelVacationModel = <Modal
+                  title={t("vacation.areYouSure")}
+                  onClose={()=>setCancelVacationState(false)}
+                    >
+                  <div className= {styles.cancelVacation}>
+                    <Button 
+                        variant="soft"
+                        loading={loadingCancelVacationState}
+                        disabled={loadingCancelVacationState}
+                        children={t("vacation.cancelRequest")}
+                        onClick={()=>sendCancelVacation()}
+                  />
+                  <Button
+                        disabled={loadingCancelVacationState}
+                        children={t("vacation.cancel")}
+                        onClick={()=>setCancelVacationState(false)}
+                  />
+                  </div>
+  </Modal>
   const addVacationFormComponent = 
           <Modal 
           title={t("vacation.vacationRequest")}
-          children={
-              [<Field key={"reason"} label={t("evaluation.reason")} children={<Input/>}/>,
-                <div className={styles['vacationDate']}>
-                    <Field key={"startDate"} label={t("vacation.startDate")} children={<Input type={"date"} min={getToday()} />}/>
-                    <Field key={"endDate"} label={t("vacation.endDate")} children={<Input type={"date"} min={getToday()} />}/>
-                </div>,
-                  <br/>,
+          onClose={()=>setAddVacation(false)}>
+            <form onSubmit={(e) => sendActionBasedOnData(e)}>
+              
+                <Field key={"reason"}
+                label={t("evaluation.reason")}
+                children={<Input 
+                required
+                value={vacationRequest.reason}
+                onChange={(e)=>setVacationRequest((pre)=>({...pre,"reason":e.target.value}))}
+                
+                />}/>
+                <div className={styles.vacationDate}>
+                    <Field key={"startDate"}
+                        label={t("vacation.startDate")}
+                        children={<Input type={"date"} min={getToday()}
+                        value={vacationRequest.start_date} 
+                        onChange={(e)=>setVacationRequest((pre)=>({...pre,"start_date":e.target.value.split(" ")[0]}))} />}/>
+                    <Field key={"endDate"}
+                        label={t("vacation.endDate")} 
+                        children={
+                        <Input type={"date"} min={getToday()}
+                        value={vacationRequest.end_date}
+                        onChange={(e)=>setVacationRequest((pre)=>({...pre,"end_date":e.target.value.split(" ")[0]}))}/>}/>
+                </div>
+                  <br/>
                   <Button 
-                  className={styles.sendRequest}
-                  children={t("evaluation.send")}/>
-              ]
-          }
-              onClose={()=>setAddVacation(false)}
-          />
-
+                        type="submit"
+                        className={styles.sendRequest}
+                        loading={sendingVacationRequest}
+                        disabled={sendingVacationRequest}
+                        children={t("evaluation.send")}
+                  />
+              </form>
+          </Modal>
   return (
+    loadingAction ?<Loading />:
   <>
     <section className={styles.page}>
       <header>
         <span className={styles.count}>
-          {vacations.vacationRequests.length} {t("vacation.requests")}
+          {vacationsList.length} {t("vacation.requests")}
         </span>
       </header>
       <div className={styles.list}>
-        {vacations.vacationRequests.map((vacation) => (
+        {vacationsList.map((vacation) => (
           <Card
-            key={vacation.id}
+            key={vacation.id }
             className={`${styles.card} ${styles[vacation.state]}`}
           >
             <div className={styles.cardHeader}>
@@ -119,9 +233,8 @@ export default function VacationPage() {
                   {vacation.reason}
                 </h3>
               </div>
-
               <Badge tone={getBadgeTone(vacation.state)}>
-                {t(`vacation.${vacation.state}`)}
+                {t(`vacation.${vacation.status}`)}
               </Badge>
             </div>
 
@@ -132,7 +245,7 @@ export default function VacationPage() {
                 </span>
 
                 <span className={styles.dateValue}>
-                  {vacation.startDate}
+                  {vacation.start_date}
                 </span>
               </div>
 
@@ -146,15 +259,33 @@ export default function VacationPage() {
                 </span>
 
                 <span className={styles.dateValue}>
-                  {vacation.endDate}
+                  {vacation.end_date}
                 </span>
               </div>
             </div>
             <div className={styles.footer}>
               <span className={styles.meta}>
                 <CalendarDays size={15} />
-                {t("vacation.submitted")} {vacation.submissionDate}
+                {t("vacation.submitted")} {vacation.submitted_at}
               </span>
+              {showCancelVacation(vacation.status,vacation.start_date)&&<div
+              className={styles.container}>
+                <Button 
+                        variant="soft"
+                        className={styles.sendRequest}
+                        loading={sendingVacationRequest}
+                        disabled={sendingVacationRequest}
+                        children={t("vacation.cancelVacation")}
+                        onClick={()=>openCancelVacation(vacation.id)}
+                  />
+                  <Button 
+                        variant="secondary"
+                        className={styles.sendRequest}
+                        loading={sendingVacationRequest}
+                        disabled={sendingVacationRequest}
+                        children={t("vacation.update")}
+                        onClick={()=>openUpdateVacation(vacation)}
+                  /></div>}
             </div>
           </Card>
         ))}
@@ -162,7 +293,7 @@ export default function VacationPage() {
         
       </div>
         {vacationState && addVacationFormComponent}
-
+        {cancelVacationState && cancelVacationModel}
     </section></>
   );
 }

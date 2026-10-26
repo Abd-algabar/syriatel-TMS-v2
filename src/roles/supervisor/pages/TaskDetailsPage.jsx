@@ -131,7 +131,6 @@ const navigate = useNavigate();
     getTask(taskId);
   }, []);
 
-  console.log("task:", task);
 
   return loading ? (
     <Loading />

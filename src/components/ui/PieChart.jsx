@@ -30,7 +30,7 @@ return (
         <div className={styles["pie-chart-container"]}>
   <div className={styles["pie-chart-visual"]}>
     <ResponsiveContainer width="100%" height="100%">
-      <RechartsPieChart>
+      <RechartsPieChart onClick={(e) => e.preventDefault()}>
         <Pie
           onClick={(e) => e.preventDefault()}
           data={totalData}
@@ -46,7 +46,8 @@ return (
         >
           {totalData.map((entry, index) => (
             <Cell
-          className={index===0?styles['pie-card']:""}
+          onClick={(e) => e.preventDefault()}
+
               key={`${entry.name}-${index}`}
               fill={color[index % color.length]}
             />

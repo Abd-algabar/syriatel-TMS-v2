@@ -31,8 +31,13 @@
     flex-direction: column;
     gap: 16px;
     min-width: 0;
+    padding-bottom: 20px;
 }
-
+.container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 .card {
     position: relative;
     min-width: 0;
@@ -201,6 +206,13 @@
 .vacationDate{
     display: flex;
     justify-content: space-between;
+}
+.vacationDateField{
+    width: 100%;
+}
+.cancelVacation{
+    display: flex;
+    justify-content: space-around;
 }
 
 

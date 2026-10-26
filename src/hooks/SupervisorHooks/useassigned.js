@@ -22,9 +22,9 @@ export default function useAssigned() {
   const [myPrograms, setMyPrograms] = useState([]);
   const [program, setProgram] = useState("");
   const [task, setTask] = useState("");
-  const [ReevaluationRequests,setReevaluationRequests]=useState([])
-  const [VacationRequests,setVacationRequests]=useState([])
-  const [absent,setAbsent]=useState([])
+  const [ReevaluationRequests, setReevaluationRequests] = useState([])
+  const [VacationRequests, setVacationRequests] = useState([])
+  const [absent, setAbsent] = useState([])
 
   const TrainerAcceptOrRejectApplication = useCallback(
     async (applicationId, type) => {
@@ -116,6 +116,7 @@ export default function useAssigned() {
     try {
       const data = await getTaskApi(taskId);
       setTask(data.data);
+      console.log(`indied the api => ${data.data}`)
     } catch (error) {
       console.log(error);
       setError(error);
@@ -137,7 +138,7 @@ export default function useAssigned() {
     }
   }, []);
 
-  const getReevaluationRequests = useCallback(async (silent=false) => {
+  const getReevaluationRequests = useCallback(async (silent = false) => {
     if (!silent) {
       setLoading(true);
     }
@@ -152,7 +153,7 @@ export default function useAssigned() {
     }
   }, []);
 
-    const createReEvaluation = useCallback(async (id, body) => {
+  const createReEvaluation = useCallback(async (id, body) => {
     setLoadingAction(id);
     try {
       const data = await createReEvaluationApi(id, body);
@@ -167,7 +168,7 @@ export default function useAssigned() {
   }, []);
 
 
-    const getVacationRequests = useCallback(async (silent=false) => {
+  const getVacationRequests = useCallback(async (silent = false) => {
     if (!silent) {
       setLoading(true);
     }
@@ -183,7 +184,7 @@ export default function useAssigned() {
   }, []);
 
 
-    const getAllAbsent = useCallback(async (silent=false) => {
+  const getAllAbsent = useCallback(async (silent = false) => {
     if (!silent) {
       setLoading(true);
     }
@@ -192,13 +193,13 @@ export default function useAssigned() {
       setAbsent(data.data);
     } catch (error) {
       console.log(error);
-       const message =
+      const message =
         error.response?.data?.message ||
         error.message ||
         "Add Absent Error";
       toast.error(Array.isArray(message) ? message.join("، ") : message);
       setError(error);
-      
+
     } finally {
       setLoading(false);
     }

@@ -14,14 +14,6 @@ export default function TrainingProgram() {
   const [trainingProgram,setTrainingProgram] = useState({})
   const [trainingProgramPhases,setTrainingProgramPhases] = useState([])
 
-  const { programId } = useParams();
-  const navigate = useNavigate();
-
-  const handleViewTask = (taskId) => {
-  navigate(`/supervisor/tasks/details/${taskId}`);
-  };
-
-
  useEffect(() => {
   const controller = new AbortController();
 

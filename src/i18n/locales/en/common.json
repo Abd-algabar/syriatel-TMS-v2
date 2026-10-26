@@ -135,7 +135,7 @@
     "instructions": "Instructions",
     "priority": "Priority",
 
-     "details": "Task Details",
+    "details": "Task Details",
     "notFound": "Task not found",
     "basicInfo": "Basic Information",
     "submission": "Trainee Submission",
@@ -144,6 +144,9 @@
     "resource": "Resource",
     "noAttachments": "No attachments available",
     "evaluate": "Evaluate Task",
+    "evidence":"Evidence",
+    "verify":"verify",
+    "start":"Start",
     "requestRevision": "Request Revision",
     "feedback": "Feedback",
     "feedbackRequired": "Please enter your feedback first",
