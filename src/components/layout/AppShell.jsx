@@ -70,7 +70,7 @@ export default function AppShell({ module }) {
           </div>
 
           <div className={styles.tools}>
-              <button    onClick={() => navigate("notifications") } className={styles.BellRing}  >
+              <button    onClick={() => navigate("notification") } className={styles.BellRing}  >
                     <BellRing  ></BellRing>
               </button>
             <LanguageSwitcher />

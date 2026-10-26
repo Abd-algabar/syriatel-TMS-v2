@@ -8,7 +8,10 @@ import { toast } from "react-toastify";
 import Loading from "../../../components/ui/Loading";
 import Modal from "../../../components/ui/Modal";
 import PageHeader from "../../../components/ui/PageHeader.jsx";
-import { getMyInterview, SetInterviewResult } from "../../../Api/SupervisorApi/supervisorApi.js";
+import {
+  getMyInterview,
+  SetInterviewResult,
+} from "../../../Api/SupervisorApi/supervisorApi.js";
 import { Check } from "lucide-react";
 import { Field, Input } from "../../../components/ui/Field.jsx";
 import form from "../../../components/ui/Form.module.css";
@@ -50,7 +53,7 @@ export default function InterviewsPage() {
 
   const handelViewNote = (i) => {
     setViewNote(true);
-    setInterview(i)
+    setInterview(i);
   };
 
   const closeModal = () => {
@@ -61,35 +64,33 @@ export default function InterviewsPage() {
     getAllInterview();
   }, []);
 
+  const handleSubmit = async (e) => {
+    setLoadingAccept(interview.id);
+    e.preventDefault();
+    try {
+      const formData = new FormData(e.currentTarget);
+      // console.log(formData.get("evaluation"));
+      const body = {
+        evaluation: +formData.get("evaluation"),
+        interview_note: formData.get("interview_note"),
+      };
+      // console.log("body",formData);
+      // console.log(interview)
+      const data = await SetInterviewResult(interview.id, body);
+      console.log(data);
+      toast.success(data.message || "success");
+      getAllInterview(true)
+      setViewNote(false);
+    } catch (error) {
+      const message =
+        error.response?.data?.message || error.message || "error in interview";
+      // console.log(message)
+      toast.error(Array.isArray(message) ? message.join("، ") : message);
+    } finally {
+      setLoadingAccept("");
+    }
+  };
 
-
-    const handleSubmit = async (e) => {
-      setLoadingAccept(interview.id)
-      e.preventDefault();
-      try {
-        const formData = new FormData(e.currentTarget);
-        console.log(formData.get("evaluation"))
-        const body={
-          evaluation:+formData.get("evaluation"),
-          interview_note: formData.get("interview_note") 
-        }
-        // console.log("body",formData);
-        // console.log(interview)
-        const data = await SetInterviewResult(interview.id,body);
-        console.log(data)
-        toast.success(data.message ||"success")
-        setViewNote(false)
-      } catch (error) {
-        const message = error.response?.data?.message || error.message || "error in interview";
-        // console.log(message)
-        toast.error(Array.isArray(message) ? message.join("، ") : message);
-      }finally{
-        setLoadingAccept('')
-      }
-  
-    
-    };
-  
   const columns = [
     {
       key: "applicant",
@@ -109,15 +110,17 @@ export default function InterviewsPage() {
     {
       key: "actions",
       header: t("label.actions", { ns: "common" }),
-      render: (i) => i.application.status=="for interview" ? (
-        <Button
-          size="sm"
-          variant="success"
-          
-          onClick={() => handelViewNote(i)}
-          icon={Check}
-        ></Button>
-      ): t("status.applicant.interviewed", { ns: "common" }),
+      render: (i) =>
+        i.application.status == "for interview" ? (
+          <Button
+            size="sm"
+            variant="success"
+            onClick={() => handelViewNote(i)}
+            icon={Check}
+          ></Button>
+        ) : (
+          t("status.applicant.interviewed", { ns: "common" })
+        ),
     },
   ];
 
@@ -141,12 +144,12 @@ export default function InterviewsPage() {
             </Field>
 
             <Field label={t("label.note", { ns: "common" })}>
-              <Input type="textArea" row={3} name="interview_note" max={100}  />
+              <Input type="textArea" row={3} name="interview_note" max={100} />
             </Field>
 
             <Button type="submit" loading={loadingAccept == interview.id}>
-                      {t("action.save", { ns: "common" })}
-              </Button>
+              {t("action.save", { ns: "common" })}
+            </Button>
           </form>
         </Modal>
       )}
