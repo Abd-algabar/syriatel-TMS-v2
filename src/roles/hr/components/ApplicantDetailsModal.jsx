@@ -91,30 +91,30 @@ export default function ApplicantDetailsModal({
         {/* {applicant.files.map((f) => (
           <span key={f} className={styles.file}><FileText size={14} /> {f}</span>
         ))} */}
-        <Link to={applicant.cv} target="_blank">
+        <a href={applicant.cv} target="_blank">
         {/* {console.log("cv:",applicant.cv)} */}
           <span className={styles.file}>
             <FileText size={14} /> {c("label.cv")}
           </span>
-        </Link>
+        </a>
 
-        <Link to={applicant.academic_qualification} target="_blank">
+        <a href={applicant.academic_qualification} target="_blank">
           <span className={styles.file}>
             <FileText size={14} /> {c("label.academicQualification")}
           </span>
-        </Link>
+        </a>
 
-        <Link to={applicant.national_id} target="_blank">
+        <a href={applicant.national_id} target="_blank">
           <span className={styles.file}>
             <FileText size={14} /> {c("label.nationalID")}
           </span>
-        </Link>
+        </a>
 
-        <Link to={applicant.personal_photo} target="_blank">
+        <a href={applicant.personal_photo} target="_blank">
           <span className={styles.file}>
             <FileText size={14} /> {c("label.personalPhoto")}
           </span>
-        </Link>
+        </a>
       </div>
 
       <div className={styles.actions}>
