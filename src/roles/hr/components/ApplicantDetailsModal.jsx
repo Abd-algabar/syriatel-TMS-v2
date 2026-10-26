@@ -13,7 +13,7 @@ export default function ApplicantDetailsModal({
 }) {
   const { t } = useTranslation("hr");
   const c = (key) => t(key, { ns: "common" });
-  // console.log("Applicant", applicant);
+  console.log("Applicant", applicant);
   return (
     <Modal
       title={t("applicants.detailsTitle", { name: applicant.full_name })}
