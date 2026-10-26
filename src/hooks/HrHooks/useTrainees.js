@@ -29,13 +29,13 @@ export default function useTrainees() {
         setLoading(true);
       }
       try {
-        const data = await getAllTraineesApi(page, limit);
+        const data = await getAllTraineesApi();
         setTrainees(data.data);
 
-        setPagination({
-          total: data.meta.total,
-          totalPages: data.meta.total_pages,
-        });
+        // setPagination({
+        //   total: data.meta.total,
+        //   totalPages: data.meta.total_pages,
+        // });
       } catch (error) {
         const message =
           error.response?.data?.message || error.message || "error";
@@ -49,7 +49,7 @@ export default function useTrainees() {
         }
       }
     },
-    [page, limit]
+    []
   );
 
   const fireTrainee = useCallback(async (id, reason) => {

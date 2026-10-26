@@ -96,11 +96,11 @@ export default function TraineesPage() {
         emptyText={t("trainees.empty")}
       />
 
-       <Pagination
+       {/* <Pagination
                 currentPage={page}
                 totalPages={pagination.totalPages}
                 onPageChange={setPage}
-              />
+              /> */}
 
 
       {fireTraineeModel && (
