@@ -20,7 +20,9 @@
     "programs": "Programs",
     "re_evaluation":"Revaluation",
     "tasks":"Tasks",
-    "vacationRequest":"Vacation Request"
+    "vacationRequest":"Vacation Request",
+    "notification":"Notification"
+
   },
   "dashboard": {
     "latestApplicants": "Latest applicants",
@@ -205,6 +207,21 @@
       "notice": "Feedback is required."
     },
     "viewAndREvaluation":"View and Revaluation"
+  },
+
+  "notificationsPage": {
+    "title": "Notifications",
+    "subtitle": "Stay up to date with your latest alerts",
+    "listTitle": "All Notifications",
+    "totalCount": "Total notifications: {{count}}",
+    "loading": "Loading notifications...",
+    "emptyTitle": "No notifications",
+    "emptyDescription": "New notifications will appear here.",
+    "loadError": "Failed to load notifications. Please try again.",
+    "retry": "Retry",
+    "previous": "Previous",
+    "next": "Next",
+    "pageInfo": "Page {{current}} of {{total}}"
   }
 
 }

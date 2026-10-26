@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import Card from "../../../components/ui/Card";
 import { Input } from "../../../components/ui/Field";
 import Table from "../../../components/ui/Table";
-import { useData } from "../../../data/DataContext";
+
 import StatusBadge from "../components/StatusBadge";
 import styles from "./Pages.module.css";
 import { getAbsentAndSearchApi } from "../../../Api/HrApi/hrApi";

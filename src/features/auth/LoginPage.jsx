@@ -1,18 +1,17 @@
-import { use, useState } from "react";
+import {  useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Button from "../../components/ui/Button";
-import { Field, Input, Select } from "../../components/ui/Field";
+import { Field, Input } from "../../components/ui/Field";
 import form from "../../components/ui/Form.module.css";
 import LanguageSwitcher from "../../components/layout/LanguageSwitcher";
 import Logo from "../../components/layout/Logo";
 import { useAuth } from "../../context/AuthContext";
-import { loginRoles, roleRegistry, ROLES } from "../../roles";
+import {  roleRegistry, ROLES } from "../../roles";
 import styles from "./LoginPage.module.css";
 import { toast } from "react-toastify";
 import { requestForToken } from "../../firebase/firebase";
 import {registerNotificationTokenApi} from '../../Api/notificationApi';
-// import  roleRegistry  from "../../roles/index";
 
 export default function LoginPage() {
   const { t } = useTranslation("auth");
@@ -53,7 +52,7 @@ export default function LoginPage() {
         if (permission === "granted") {
           const token = await requestForToken();
           if (token) {
-            console.log("notification Token :", token);
+            // console.log("notification Token :", token);
             setToken(token);
             try {
               await registerNotificationTokenApi(token);
@@ -122,15 +121,7 @@ export default function LoginPage() {
           <p className={styles.subtitle}>{t("subtitle")}</p>
 
           <form className={form.form} onSubmit={handleSubmit}>
-            {/* <Field label={c('label.role')}>
-              <Select value={role} onChange={(e) => setRole(e.target.value)}>
-                {loginRoles.map(({ value, enabled }) => (
-                  <option key={value} value={value} disabled={!enabled}>
-                    {c(`role.${value}`)}{enabled ? '' : ` — ${t('comingSoon')}`}
-                  </option>
-                ))}
-              </Select>
-            </Field> */}
+         
 
             <Field label={c("label.email")}>
               <Input

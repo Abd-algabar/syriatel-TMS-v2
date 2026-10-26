@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Table from "../../../components/ui/Table";
-import { useData } from "../../../data/DataContext";
+
 import styles from "./Pages.module.css";
 import useTrainees from "../../../hooks/HrHooks/useTrainees";
 import Button from "../../../components/ui/Button";

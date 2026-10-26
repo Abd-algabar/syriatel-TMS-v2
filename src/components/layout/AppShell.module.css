@@ -126,6 +126,18 @@
 }
 .backdrop { display: none; }
 
+.BellRing{
+  color: #737780;
+  background: transparent;
+  border: none;
+    
+
+}
+.BellRing :hover {
+  color:#e60000;
+  
+  
+}
 /* ---------- Mobile ---------- */
 @media (max-width: 960px) {
   .sidebar {

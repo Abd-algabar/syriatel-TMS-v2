@@ -54,7 +54,7 @@ import {
   LoaderCircle,
 } from "lucide-react";
 import { toast } from "react-toastify";
-import html2pdf from "html2pdf.js";
+
 
 import { getReportApi } from "../../../Api/HrApi/hrApi";
 import Button from "../../../components/ui/Button";

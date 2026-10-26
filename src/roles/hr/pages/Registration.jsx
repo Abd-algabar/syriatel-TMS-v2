@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PageHeader from "../../../components/ui/PageHeader";
 import Button from "../../../components/ui/Button";
-import { Unlock, School, Plus, LockIcon } from "lucide-react";
+import { Unlock, School, Plus } from "lucide-react";
 import form from "../../../components/ui/Form.module.css";
 
 import Card from "../../../components/ui/Card";

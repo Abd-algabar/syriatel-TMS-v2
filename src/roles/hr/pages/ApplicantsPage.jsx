@@ -19,7 +19,7 @@ import styles from "./ApplicantsPage.module.css";
 import useApplicants from "../../../hooks/HrHooks/useApplicants";
 import Loading from "../../../components/ui/Loading";
 import Pagination from "../../../components/ui/Pagination";
-import { toast } from "react-toastify";
+
 export default function ApplicantsPage() {
   const { t } = useTranslation("hr");
   const c = (key, opts) => t(key, { ns: "common", ...opts });

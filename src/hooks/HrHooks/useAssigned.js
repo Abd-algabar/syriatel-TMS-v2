@@ -7,7 +7,7 @@ export default function useAssign() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const search = useCallback(async (silent = false) => {
+  const getAssigned = useCallback(async (silent = false) => {
     if (!silent) {
       setLoading(true);
     }
@@ -29,13 +29,11 @@ export default function useAssign() {
     }
   }, []);
 
-  useEffect(() => {
-    search();
-  }, []);
+ 
 
   return {
     // operation
-
+    getAssigned,
     // loading
     loading,
 

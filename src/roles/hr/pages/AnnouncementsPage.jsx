@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import Badge from "../../../components/ui/Badge";
 import Button from "../../../components/ui/Button";
 import Card from "../../../components/ui/Card";
-import { Field, Input, Select, Textarea } from "../../../components/ui/Field";
+import { Field, Input, Textarea } from "../../../components/ui/Field";
 import form from "../../../components/ui/Form.module.css";
 import Modal from "../../../components/ui/Modal";
 import PageHeader from "../../../components/ui/PageHeader";

@@ -1,20 +1,13 @@
 import { useTranslation } from "react-i18next";
 import Button from "../../../components/ui/Button";
 import Table from "../../../components/ui/Table";
-import { APPLICANT_STATUS } from "../../../constants";
-import { useToast } from "../../../context/ToastContext";
-import { useData } from "../../../data/DataContext";
-import useBusy from "../../../hooks/useBusy";
+
 import styles from "./Pages.module.css";
-import useAssign from "../../../hooks/HrHooks/useAssigned";
 import Loading from "../../../components/ui/Loading";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
-import { getApplicant } from "../../../Api/HrApi/applicantsApi";
-// import ApplicantDetailsModal from "../components/ApplicantDetailsModal";
 import ApplicantDetailsModal from "../../hr/components/ApplicantDetailsModal";
 import { Check } from "lucide-react";
-import ScheduleInterviewModal from "../../hr/components/ScheduleInterviewModal";
 import { getMyAssignApi } from "../../../Api/SupervisorApi/assignedApi";
 import { X } from "lucide-react";
 import useAssigned from "../../../hooks/SupervisorHooks/useassigned";

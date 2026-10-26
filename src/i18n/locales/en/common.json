@@ -196,6 +196,62 @@
     "deleteTitle": "Confirm Deletion",
     "description": "Are you sure you want to delete this?",
     "delete": "Delete"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "subtitle": "Stay up to date with your latest alerts and updates",
+    "breadcrumbDashboard": "Dashboard",
+    "markAll": "Mark all as read",
+    "total": "Total notifications",
+    "totalHint": "All received alerts",
+    "unread": "Unread",
+    "unreadHint": "Notifications awaiting review",
+    "read": "Read",
+    "readHint": "Notifications already reviewed",
+    "listTitle": "All notifications",
+    "listSubtitle": "Manage and review your notifications",
+    "resultsCount": "{{count}} notifications",
+    "search": "Search notifications...",
+    "filterOptions": "Filter options",
+    "filters": {
+      "all": "All",
+      "unread": "Unread",
+      "read": "Read"
+    },
+    "new": "New",
+    "markAsRead": "Mark as read",
+    "moreOptions": "Notification options",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "emptyTitle": "No notifications",
+    "emptyDescription": "No notifications match your search or filters.",
+    "samples": {
+      "interview": {
+        "title": "New interview scheduled",
+        "message": "An interview has been scheduled for a training program applicant.",
+        "time": "10 minutes ago"
+      },
+      "trainee": {
+        "title": "New trainee",
+        "message": "A new trainee has been successfully registered in the current training program.",
+        "time": "35 minutes ago"
+      },
+      "evaluation": {
+        "title": "Evaluation updated",
+        "message": "A supervisor has submitted a new trainee evaluation.",
+        "time": "2 hours ago"
+      },
+      "announcement": {
+        "title": "New announcement",
+        "message": "A new announcement has been published for supervisors and trainees.",
+        "time": "Yesterday, 3:45 PM"
+      },
+      "report": {
+        "title": "Training report",
+        "message": "You can review the current training cycle statistics summary.",
+        "time": "Yesterday, 10:20 AM"
+      }
+    }
   }
   
 }

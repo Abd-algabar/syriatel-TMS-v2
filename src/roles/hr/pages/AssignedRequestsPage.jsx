@@ -5,15 +5,15 @@ import styles from "./Pages.module.css";
 import useAssign from "../../../hooks/HrHooks/useAssigned";
 import Loading from "../../../components/ui/Loading";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ScheduleInterviewModal from "../components/ScheduleInterviewModal";
 
 export default function AssignedRequestsPage() {
   const { t } = useTranslation("hr");
 
-  const [applicant,setApplicant]=useState([])
-  const [actionLoading,setActionLoading]=useState("")
-  const { loading, assigned ,error} = useAssign();
+  const [applicant, setApplicant] = useState([]);
+  const [actionLoading, setActionLoading] = useState("");
+  const { loading, assigned, error, getAssigned } = useAssign();
   const [modal, setModal] = useState(null); // { type: 'details' | 'assign' | 'schedule', applicant }
 
   const closeModal = () => {
@@ -21,10 +21,10 @@ export default function AssignedRequestsPage() {
   };
 
   const rows = assigned;
-  
+
   const handleScheduleInterview = async (a) => {
     setActionLoading(a.id);
-    setApplicant(a)
+    setApplicant(a);
     setActionLoading(null);
     if (!a) {
       return;
@@ -34,9 +34,10 @@ export default function AssignedRequestsPage() {
     });
 
     if (error) {
-      console.log("error:",error)
-      const message = error.response?.data?.message || error.message || "error in interview";
-      toast.error(message)
+      console.log("error:", error);
+      const message =
+        error.response?.data?.message || error.message || "error in interview";
+      toast.error(message);
     }
   };
 
@@ -63,27 +64,36 @@ export default function AssignedRequestsPage() {
     {
       key: "actions",
       header: t("label.actions", { ns: "common" }),
-      render: (a) =>a.status === "qualified" &&  (
-        <Button
-          size="sm"
-          loading={a.id==actionLoading}
-          onClick={() => handleScheduleInterview(a)}
-        >
-          {t("applicants.scheduleInterview")}
-        </Button>
-      ),
+      render: (a) =>
+        a.status === "qualified" && (
+          <Button
+            size="sm"
+            loading={a.id == actionLoading}
+            onClick={() => handleScheduleInterview(a)}
+          >
+            {t("applicants.scheduleInterview")}
+          </Button>
+        ),
     },
   ];
 
+  useEffect(() => {
+    getAssigned();
+  }, []);
+
   return loading ? (
     <Loading />
-  ) : (<>
-  
-    <Table columns={columns} rows={rows} emptyText={t("assigned.empty")} />
-    
-    {modal?.type === "schedule" && applicant && (
-            <ScheduleInterviewModal applicant={applicant} onClose={closeModal} />
-          )} 
-  </>
+  ) : (
+    <>
+      <Table columns={columns} rows={rows} emptyText={t("assigned.empty")} />
+
+      {modal?.type === "schedule" && applicant && (
+        <ScheduleInterviewModal
+          applicant={applicant}
+          onClose={closeModal}
+          update={getAssigned}
+        />
+      )}
+    </>
   );
 }

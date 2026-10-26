@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Table from "../../../components/ui/Table";
-import { useData } from "../../../data/DataContext";
+
 import styles from "./Pages.module.css";
 import { useEffect, useState } from "react";
 import Loading from "../../../components/ui/Loading";

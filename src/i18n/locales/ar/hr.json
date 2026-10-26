@@ -20,7 +20,8 @@
     "programs": "البرامج ",
     "re_evaluation":"اعادة التقيم",
     "tasks":"المهام",
-    "vacationRequest":" طلبات الاجازة"
+    "vacationRequest":" طلبات الاجازة",
+    "notification":"الإشعارات"
   },
   "dashboard": {
     "latestApplicants": "أحدث المتقدمين",
@@ -207,8 +208,22 @@
       "notice": "الملاحظة مطلوبة."
     },
     "viewAndREvaluation":"عرض واعادة التقيم"
-  }
+  },
 
+   "notificationsPage": {
+    "title": "الإشعارات",
+    "subtitle": "تابع آخر التنبيهات والتحديثات الخاصة بك",
+    "listTitle": "جميع الإشعارات",
+    "totalCount": "إجمالي الإشعارات: {{count}}",
+    "loading": "جارٍ تحميل الإشعارات...",
+    "emptyTitle": "لا توجد إشعارات",
+    "emptyDescription": "ستظهر الإشعارات الجديدة هنا.",
+    "loadError": "تعذر تحميل الإشعارات. حاول مرة أخرى.",
+    "retry": "إعادة المحاولة",
+    "previous": "السابق",
+    "next": "التالي",
+    "pageInfo": "صفحة {{current}} من {{total}}"
+  }
 
  
 }

@@ -108,37 +108,7 @@ export default function ProgramDetails({ onAddTask, onTaskClick }) {
                     <p className={styles.noTasks}>{t("task.noTasks")}</p>
                   ) : (
                     phase.tasks.map((task) => (
-                      // <button
-                      //   key={task._id || task.id}
-                      //   className={styles.task}
-                      //   onClick={() => handleViewTask(task.id)}
-                      // >
-                      //   <div className={styles.taskIcon}>
-                      //     <ClipboardList size={19} />
-                      //   </div>
-
-                      //   <div className={styles.taskInfo}>
-                      //     <h4>{task.title}</h4>
-                      //     <p>
-                      //       {task.description || t("program.noDescription")}
-                      //     </p>
-
-                      //     {task.assignee && (
-                      //       <span className={styles.assignee}>
-                      //         {t("task.assignee")}:{" "}
-                      //         {typeof task.assignee === "string"
-                      //           ? task.assignee
-                      //           : task.assignee.fullname ||
-                      //             task.assignee.name ||
-                      //             task.assignee.email}
-                      //       </span>
-                      //     )}
-                      //   </div>
-
-                      //   <span className={styles.taskArrow}>
-                      //     <ArrowRight size={18} />
-                      //   </span>
-                      // </button>
+                    
                       <TaskCard task={task} key={task.id} />
                     ))
                   )}
