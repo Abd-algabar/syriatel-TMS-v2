@@ -43,7 +43,8 @@
     "SubmissionDate": "Submission Date",
     "note":"Note",
      "rating":"Rating",
-     "fire":"Fire"
+     "fire":"Fire",
+    "additionalInfo":"Additional Info"
 
   },
   "language": { "switchTo": "عربي" },

@@ -84,6 +84,11 @@ export default function ApplicantDetailsModal({
           <dt>{c("label.SubmissionDate")}</dt>
           <dd>{ new Date(applicant.submission_date).toISOString().split('T')[0] ||"empty "}</dd>
         </div>
+
+        <div>
+          <dt>{c("label.additionalInfo")}</dt>
+          <dd>{applicant.additional_info ||"empty "}</dd>
+        </div>
       </dl>
 
       <h5 className={styles.sub}>{t("applicants.attachments")}</h5>
