@@ -1,5 +1,4 @@
-import { Link, useParams } from "react-router-dom";
-// import {getTaskDetails} from "../../../../Api/Trainee/trainingProgramApi"
+import { Link } from "react-router-dom";
 import {
   CalendarDays,
   UserRound,
@@ -30,19 +29,6 @@ export default function TrainingProgramTaskCard({ task }) {
   const rawStatus = task?.status?.trim().toLowerCase();
   const normalizedStatus = statusMap[rawStatus] || "UNKNOWN";
 
-  const formatDate = (date) => {
-    if (!date) return t("task.noDeadline");
-
-    const parsedDate = new Date(date);
-
-    if (Number.isNaN(parsedDate.getTime())) return date;
-
-    return new Intl.DateTimeFormat(i18n.language, {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    }).format(parsedDate);
-  };
 
   const isOverdue =
     task.deadline && new Date(task.deadline).getTime() < Date.now();

@@ -22,7 +22,12 @@ export default function AppShell({ module }) {
   // console.log("module:",module)
   useEffect(() => setMenuOpen(false), [pathname]);
 
-  const current = module.nav.find((item) => pathname.startsWith(`${module.basePath}/${item.path}`));
+  const current = module?.nav?.find(
+  (item) =>
+    item &&
+    typeof item.path === "string" &&
+    pathname.startsWith(`${module.basePath}/${item.path}`)
+);
   const roleName = t(`role.${module.role}`);
 
   return (

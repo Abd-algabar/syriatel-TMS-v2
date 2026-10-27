@@ -5,65 +5,28 @@ import Button from "../../../../components/ui/Button.jsx"
 import Modal from "../../../../components/ui/Modal.jsx"
 import {Field,Input} from "../../../../components/ui/Field.jsx"
 import styles from "./EvaluationPage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Loading from "../../../../components/ui/Loading";
-import { toast } from "react-toastify";
-import {getTraineeEvaluation,requestReEvaluation} from "../../../../Api/Trainee/evaluationApi.js"
 import { useTranslation } from 'react-i18next';
+import evaluationHooks from "../../../../hooks/TraineeHooks/evaluationHooks.js"
 export default function EvaluationPage(){
     const {t}=useTranslation('trainee')
-    const [reEvaluationForm,setRevaluationForm]=useState(false);
-    const [loadingAction,setLoadingAction]= useState(false);
-    const [reEvaluationState,setReEvaluationState]= useState(false);
-    const [reEvaluationAvaliability,setReEvaluationAvaliability]= useState(false);
-    const [reEvaluationReason,setReEvaluationReason]= useState("");
-    const [evaluationScore, setEvaluationScore] = useState({}); 
-    const [evaluationIndicators, setEvaluationIndicators] = useState([]); 
-
+    
+    const {reEvaluationForm,
+        loadingAction,
+        reEvaluationState,
+        reEvaluationAvaliability,
+        reEvaluationReason,
+        evaluationScore,
+        evaluationIndicators,
+        fetchEvaluation,
+        reEvaluationFunction,
+        setRevaluationForm,
+        closeTheForm,} = evaluationHooks()
     useEffect(() => {
-    const fetchEvaluation = async () => {
-      try {
-        setLoadingAction(true);
-        const response = await getTraineeEvaluation();
-        const evaluationData = response.data;
-        const indicators = evaluationData?.evaluation.indicators ?? [];
-        setEvaluationIndicators(
-          Array.isArray(indicators) ? indicators : []
-        );
-        setEvaluationScore({
-          score: evaluationData?.evaluation.score ?? "",
-          notice: evaluationData?.evaluation.description ?? "",
-        });
-        setReEvaluationAvaliability(evaluationData?.reevaluation ?? false)
-      } catch (error) {
-        console.error("Failed to fetch evaluation:", error);
-      } finally {
-        setLoadingAction(false);
-      }
-    };
-
     fetchEvaluation();
   }, []);
 
-  const reEvaluationFunction=async(e)=>{
-    try{
-      e.preventDefault();
-      setReEvaluationState(true)
-      const response=await requestReEvaluation({reason:reEvaluationReason})
-      setRevaluationForm(false)
-      toast.success(response.message)
-    }catch(error){
-        toast.error(error.message)
-        console.error("Failed to send re-evaluation request:", error);
-    }finally{
-      setReEvaluationState(false)
-    }
-  }
-
-  const closeTheForm=()=>{
-    setRevaluationForm(false)
-    setReEvaluationReason("")
-  }
     const reEvaluationFormComponent = (
   <Modal
     title={t("evaluation.reEvaluationRequest")}

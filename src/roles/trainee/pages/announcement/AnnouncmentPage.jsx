@@ -1,4 +1,4 @@
-import { Clock, Megaphone } from "lucide-react";
+import { Clock } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Badge from "../../../../components/ui/Badge";
@@ -7,8 +7,6 @@ import Card from "../../../../components/ui/Card";
 import { Field, Input, Select, Textarea } from "../../../../components/ui/Field";
 import form from "../../../../components/ui/Form.module.css";
 import Modal from "../../../../components/ui/Modal";
-import PageHeader from "../../../../components/ui/PageHeader";
-
 import styles from "./AnnouncementPage.module.css";
 import useAnnouncements from "../../../../hooks/useAnnouncements.js";
 import Loading from "../../../../components/ui/Loading.jsx";
@@ -18,7 +16,6 @@ export default function AnnouncementsPage() {
     announcements,
     loading,
     loadingCreate,
-    refreshing,
     getAnnouncementsTrainee,
   } = useAnnouncements();
 

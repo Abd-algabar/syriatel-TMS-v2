@@ -21,7 +21,9 @@
     "re_evaluation":"اعادة التقيم",
     "tasks":"المهام",
     "vacationRequest":" طلبات الاجازة",
-    "notification":"الإشعارات"
+    "notification":"الإشعارات",
+    "settings":"الاعدادات"
+
   },
   "dashboard": {
     "latestApplicants": "أحدث المتقدمين",

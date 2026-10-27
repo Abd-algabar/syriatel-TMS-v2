@@ -21,7 +21,8 @@
     "re_evaluation":"Revaluation",
     "tasks":"Tasks",
     "vacationRequest":"Vacation Request",
-    "notification":"Notification"
+    "notification":"Notification",
+    "settings":"Settings"
 
   },
   "dashboard": {
