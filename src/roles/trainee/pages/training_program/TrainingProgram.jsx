@@ -1,55 +1,21 @@
 import { useTranslation } from "react-i18next";
-import { Plus, ClipboardList, ArrowRight, CalendarDays } from "lucide-react";
+import {  ClipboardList, CalendarDays } from "lucide-react";
 import styles from "./TrainingProgram.module.css";
-import useAssigned from "../../../../hooks/SupervisorHooks/useassigned";
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 import Loading from "../../../../components/ui/Loading"
-import { toast } from "react-toastify";
 import TrainingProgramTaskCard from "./TrainingProgramTaskCard"
-import {getTrainingProgram} from "../../../../Api/Trainee/trainingProgramApi"
+import TrainingProgramHooks from "../../../../hooks/TraineeHooks/trainingProgramHooks";
 export default function TrainingProgram() {
   const { t } = useTranslation("common");
-  const [loadingAction,setLoadingAction]= useState(false);
-  const [trainingProgram,setTrainingProgram] = useState({})
-  const [trainingProgramPhases,setTrainingProgramPhases] = useState([])
 
+const {
+        loadingAction,
+        trainingProgram,
+        trainingProgramPhases,
+        controller,
+        getTrainingProgramInfo
+    } = TrainingProgramHooks();
  useEffect(() => {
-  const controller = new AbortController();
-
-  const getTrainingProgramInfo = async () => {
-    try {
-      setLoadingAction(true);
-
-      const response = await getTrainingProgram({
-        signal: controller.signal,
-      });
-
-      const data = response.data;
-
-      setTrainingProgram({
-        title: data?.title ?? "",
-        description: data?.description ?? "",
-        deadline: data?.deadline ?? "",
-        phases_count: data?.phases_count ?? "",
-      });
-
-      const phases = data?.phases ?? [];
-      setTrainingProgramPhases(
-        Array.isArray(phases) ? phases : []
-      );
-    } catch (error) {
-      if (error.name !== "CanceledError" &&
-          error.name !== "AbortError") {
-        console.error(error);
-        toast.error(error.message);
-      }
-    } finally {
-      if (!controller.signal.aborted) {
-        setLoadingAction(false);
-      }
-    }
-  };
   getTrainingProgramInfo();
   return () => {
     controller.abort();

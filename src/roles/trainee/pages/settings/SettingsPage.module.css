@@ -39,8 +39,7 @@
 }
 
 .layout {
-    display: grid;
-    grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
+    display: flex;
     align-items: start;
     gap: 24px;
 }
@@ -343,7 +342,6 @@
     }
 
     .layout {
-        grid-template-columns: minmax(0, 1fr);
         gap: 16px;
     }
 

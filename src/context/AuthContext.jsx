@@ -54,6 +54,7 @@ export function AuthProvider({ children }) {
    * تسجيل الدخول
    */
   const login = useCallback(async ({ email, password }) => {
+    console.log(password)
     const response = await api.post("auth/login", {
       email,
       password,

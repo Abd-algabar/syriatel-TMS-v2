@@ -68,7 +68,39 @@
                 "completed_tasks_count":"Completed Tasks Count",
                 "assigned_tasks_count":"Assigned Tasks Count"
 
-        }
+        },
+  "settings": {
+    "title": "Settings",
+    "description": "Manage your account security and password.",
+    "account": "Account",
+    "changePassword": "Change Password",
+    "passwordDescription": "Update your password to keep your account secure.",
+    "currentPassword": "Current password",
+    "currentPlaceholder": "Enter your current password",
+    "newPassword": "New password",
+    "newPlaceholder": "Enter your new password",
+    "confirmPassword": "Confirm new password",
+    "confirmPlaceholder": "Re-enter your new password",
+    "hidePassword": "Hide password",
+    "showPassword": "Show password",
+    "passwordHint": "Use at least 8 characters. Avoid reusing your current password.",
+    "saveChanges": "Save Changes",
+    "apiNotConnected": "Password update is not connected to the API yet.",
+    "success": "Your password has been changed successfully.",
+    "failure": "Unable to change your password. Please try again.",
+    "validation": {
+      "currentRequired": "Current password is required.",
+      "newRequired": "New password is required.",
+      "minLength": "Password must contain at least 8 characters.",
+      "samePassword": "New password must differ from current password.",
+      "confirmRequired": "Please confirm your new password.",
+      "passwordMismatch": "Passwords do not match."
+    }
+  },
+  "common": {
+    "cancel": "Cancel",
+    "saving": "Saving..."
+  }
 
 
 }
