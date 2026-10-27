@@ -13,7 +13,7 @@ export default function ApplicantDetailsModal({
 }) {
   const { t } = useTranslation("hr");
   const c = (key) => t(key, { ns: "common" });
-  // console.log("Applicant", applicant);
+  console.log("Applicant", applicant);
   return (
     <Modal
       title={t("applicants.detailsTitle", { name: applicant.full_name })}
@@ -91,26 +91,28 @@ export default function ApplicantDetailsModal({
         {/* {applicant.files.map((f) => (
           <span key={f} className={styles.file}><FileText size={14} /> {f}</span>
         ))} */}
-        <a href={applicant.cv} target="_blank">
-        {/* {console.log("cv:",applicant.cv)} */}
+        <a href={applicant.cv} rel="noopener noreferrer" target="_blank">
+
+        {console.log("cv:",applicant.cv)}
           <span className={styles.file}>
             <FileText size={14} /> {c("label.cv")}
           </span>
         </a>
 
-        <a href={applicant.academic_qualification} target="_blank">
+        <a href={applicant.academic_qualification} rel="noopener noreferrer"  target="_blank">
+          
           <span className={styles.file}>
             <FileText size={14} /> {c("label.academicQualification")}
           </span>
         </a>
 
-        <a href={applicant.national_id} target="_blank">
+        <a href={applicant.national_id} rel="noopener noreferrer" target="_blank">
           <span className={styles.file}>
             <FileText size={14} /> {c("label.nationalID")}
           </span>
         </a>
 
-        <a href={applicant.personal_photo} target="_blank">
+        <a href={applicant.personal_photo} rel="noopener noreferrer" target="_blank">
           <span className={styles.file}>
             <FileText size={14} /> {c("label.personalPhoto")}
           </span>
