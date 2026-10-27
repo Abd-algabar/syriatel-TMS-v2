@@ -1,7 +1,8 @@
+import { CalendarCheck, AlertCircle } from "lucide-react"
 import { getDahshboard } from "../../Api/Trainee/dashboardApi";
 import { useState } from 'react'
 export default function DashboardHooks() {
-    const [loadingData, setLoadingData] = useState(true);
+    const [loadingData, setLoadingData] = useState(false);
     const [taskDeadline, setTaskDeadline] = useState([]);
     const [taskStatistics, setTaskStatistics] = useState([]);
     const [error, setError] = useState(false);

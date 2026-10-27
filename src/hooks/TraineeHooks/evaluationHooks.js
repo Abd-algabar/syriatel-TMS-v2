@@ -27,6 +27,7 @@ export default function evaluationHooks() {
             });
             setReEvaluationAvaliability(evaluationData?.reevaluation ?? false)
         } catch (error) {
+            toast.error(error.message)
             console.error("Failed to fetch evaluation:", error);
         } finally {
             setLoadingAction(false);

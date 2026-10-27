@@ -40,7 +40,8 @@ export default function VacationPage() {
         openUpdateVacation,
         sendCancelVacation,
         sendUpdateVacation,
-        sendVacationRequest
+        sendVacationRequest,
+        setAddVacation,setVacationRequest
     } = VacationHooks()
 
   useEffect(()=>{

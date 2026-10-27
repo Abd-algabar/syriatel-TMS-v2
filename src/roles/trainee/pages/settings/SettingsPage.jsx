@@ -148,113 +148,108 @@ export default function SettingsPage({
         </div>
 
         <div className={styles.divider} />
-        <form
-          className={styles.form}
-          onSubmit={()=>handleSubmit()}
-        >
-          {passwordFields.map((field) => (
-            <div className={styles.field} key={field.name + field.label}>
-              <label htmlFor={field.name}>
-                {t(field.label, {
-                  defaultValue: field.label,
-                })}
-                <span className={styles.required}>*</span>
-              </label>
-
-              <div
-                className={`${styles.inputWrapper} ${
-                  errors[field.name] ? styles.inputError : ""
-                }`}
-              >
-                <input
-                  id={field.name}
-                  name={field.name}
-                  type={field.visible ? "text" : "password"}
-                  value={formData[field.name]}
-                  onChange={(event) =>
-                    updateField(field.name, event.target.value)
-                  }
-                  placeholder={t(field.placeholder, {
-                    defaultValue: field.placeholder,
+          <form
+            className={styles.form}
+            onSubmit={(event) => {
+              event.preventDefault();
+              handleSubmit();
+            }}
+          >
+            {passwordFields.map((field) => (
+              <div className={styles.field} key={field.name + field.label}>
+                <label htmlFor={field.name}>
+                  {t(field.label, {
+                    defaultValue: field.label,
                   })}
-                  autoComplete={
-                    field.name === "currentPassword"
-                      ? "current-password"
-                      : field.name === "newPassword"
-                        ? "new-password"
+                  <span className={styles.required}>*</span>
+                </label>
+
+                <div
+                  className={`${styles.inputWrapper} ${
+                    errors[field.name] ? styles.inputError : ""
+                  }`}
+                >
+                  <input
+                    id={field.name}
+                    name={field.name}
+                    type={field.visible ? "text" : "password"}
+                    value={formData[field.name]}
+                    onChange={(event) =>
+                      updateField(field.name, event.target.value)
+                    }
+                    placeholder={t(field.placeholder, {
+                      defaultValue: field.placeholder,
+                    })}
+                    autoComplete={
+                      field.name === "currentPassword"
+                        ? "current-password"
                         : "new-password"
-                  }
-                  aria-invalid={Boolean(errors[field.name])}
-                  aria-describedby={
-                    errors[field.name]
-                      ? `${field.name}-error`
-                      : undefined
-                  }
-                  disabled={loading}
-                  required
-                />
+                    }
+                    aria-invalid={Boolean(errors[field.name])}
+                    aria-describedby={
+                      errors[field.name]
+                        ? `${field.name}-error`
+                        : undefined
+                    }
+                    disabled={loading}
+                    required
+                  />
 
-                <button
-                  type="Button"
-                  className={styles.visibilityButton}
-                  onClick={field.toggle}
-                  aria-label={
-                    field.visible
-                      ? t("settings.hidePassword", {
-                          defaultValue: "Hide password",
-                        })
-                      : t("settings.showPassword", {
-                          defaultValue: "Show password",
-                        })
-                  }
-                  disabled={loading}
-                >
-                  {field.visible ? (
-                    <EyeOff size={19} />
-                  ) : (
-                    <Eye size={19} />
-                  )}
-                </button>
+                  <button
+                    type="button"
+                    className={styles.visibilityButton}
+                    onClick={field.toggle}
+                    aria-label={
+                      field.visible
+                        ? t("settings.hidePassword", {
+                            defaultValue: "Hide password",
+                          })
+                        : t("settings.showPassword", {
+                            defaultValue: "Show password",
+                          })
+                    }
+                    disabled={loading}
+                  >
+                    {field.visible ? (
+                      <EyeOff size={19} />
+                    ) : (
+                      <Eye size={19} />
+                    )}
+                  </button>
+                </div>
+
+                {errors[field.name] && (
+                  <p
+                    className={styles.errorText}
+                    id={`${field.name}-error`}
+                    role="alert"
+                  >
+                    {t(errors[field.name], {
+                      defaultValue: errors[field.name],
+                    })}
+                  </p>
+                )}
               </div>
+            ))}
 
-              {errors[field.name] && (
-                <p
-                  className={styles.errorText}
-                  id={`${field.name}-error`}
-                  role="alert"
-                >
-                  {t(errors[field.name], {
-                    defaultValue: errors[field.name],
-                  })}
-                </p>
-              )}
+            <p className={styles.passwordHint}>
+              {t("settings.passwordHint", {
+                defaultValue:
+                  "Use at least 8 characters. Avoid reusing your current password.",
+              })}
+            </p>
+
+            <div className={styles.formActions}>
+              <Button
+                type="submit"
+                className={styles.saveButton}
+                disabled={loadingAction}
+                loading={loadingAction}
+              >
+                {t("settings.saveChanges")}
+              </Button>
             </div>
-          ))}
-
-          <p className={styles.passwordHint}>
-            {t("settings.passwordHint", {
-              defaultValue:
-                "Use at least 8 characters. Avoid reusing your current password.",
-            })}
-          </p>
-
-          <div className={styles.formActions}>
-            <Button
-              type="submit"
-              className={styles.saveButton}
-              disabled={loadingAction}
-              loading={loadingAction}
-            >
-              {loading
-                ? t("common.saving", {
-                    defaultValue: "Saving...",
-                  })
-                : t("settings.saveChanges", {
-                    defaultValue: "Save Changes",
-                  })}
-            </Button>
-          </div>
-        </form>
+          </form>
       </section>
     </div>
   </main>

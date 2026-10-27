@@ -283,7 +283,7 @@ export default function TaskDetailsPage({}) {
                         </div>
                       </div>
                     </section>}
-          {task.status ==="pending" ? 
+          {task.can_update ?(task.status ==="pending" ? 
           <Button
                 variant="primary"
                 icon={Play}
@@ -322,7 +322,7 @@ export default function TaskDetailsPage({}) {
               </Button>
             </>
 
-          </footer>}
+          </footer>):<></>}
         </Card>
 
     

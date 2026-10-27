@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import styles from "./TrainingProgramTaskCard.module.css";
 
 
-export default function TrainingProgramTaskCard({ task }) {
+export default function TrainingProgramTaskCard({ task ,available }) {
   const { t, i18n } = useTranslation();
   if (!task) return null;
 
@@ -35,9 +35,10 @@ export default function TrainingProgramTaskCard({ task }) {
 
   return (
     <Link
-      to={`/trainee/tasks/details/${task.id}`}
+      to={available ? `/trainee/tasks/details/${task.id}` :'#'}
       className={styles.card}
       aria-label={`${t("task.viewDetails")}: ${task.name}`}
+
     >
       <div className={styles.header}>
         <div className={styles.titleWrapper}>

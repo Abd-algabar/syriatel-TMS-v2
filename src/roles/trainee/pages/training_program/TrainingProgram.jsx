@@ -13,7 +13,8 @@ const {
         trainingProgram,
         trainingProgramPhases,
         controller,
-        getTrainingProgramInfo
+        getTrainingProgramInfo,
+        checkIsCurrentTrainee,
     } = TrainingProgramHooks();
  useEffect(() => {
   getTrainingProgramInfo();
@@ -71,7 +72,7 @@ const {
                     <p className={styles.noTasks}>{t("task.noTasks")}</p>
                   ) : (
                     phase.tasks.map((task) => (
-                      <TrainingProgramTaskCard task={task} key={task.id} />
+                      <TrainingProgramTaskCard task={task} key={task.id} available={true} />
                     ))
                   )}
                 </div>

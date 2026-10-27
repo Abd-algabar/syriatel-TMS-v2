@@ -1,7 +1,10 @@
 import { changePassword } from "../../Api/Trainee/settings";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 export default function SettingsHooks() {
+    const { t } = useTranslation('trainee');
+
     const [loadingAction, setLoadingAction] = useState(false);
 
     const [showCurrentPassword, setShowCurrentPassword] =
@@ -19,13 +22,10 @@ export default function SettingsHooks() {
     const [errors, setErrors] = useState({});
 
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    const handleSubmit = async () => {
+        console.log('asdkfjalsdkfjal;skdjf;laskdjf')
         if (!validateForm()) return;
         try {
-            console.log(validateForm())
-            console.log(started)
-
             setLoadingAction(true);
             const response = await changePassword({
                 current_password: formData.currentPassword,

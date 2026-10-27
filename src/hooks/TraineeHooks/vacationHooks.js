@@ -119,5 +119,7 @@ export default function VacationHooks() {
         sendCancelVacation,
         sendUpdateVacation,
         sendVacationRequest,
+        setAddVacation,
+        setVacationRequest
     }
 }

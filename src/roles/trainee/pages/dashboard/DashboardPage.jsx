@@ -42,11 +42,12 @@ export default function DashboardPage() {
     const { t } = useTranslation("trainee");
     const {
         loadingData, taskDeadline, taskStatistics, error, fetchDashboard
-    } = DashboardHooks()
+    } = DashboardHooks();
     useEffect(() => {
         fetchDashboard();
-    }, []);
+    console.log(`===========${loadingData}`)
 
+    }, []);
     if (loadingData) return <Loading />;
 
     return (

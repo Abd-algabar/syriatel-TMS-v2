@@ -10,6 +10,8 @@ import Modal from "../../../../components/ui/Modal";
 import styles from "./AnnouncementPage.module.css";
 import useAnnouncements from "../../../../hooks/useAnnouncements.js";
 import Loading from "../../../../components/ui/Loading.jsx";
+import PageHeader from "../../../../components/ui/PageHeader";
+
 export default function AnnouncementsPage() {
   const { t } = useTranslation("hr");
   const {
@@ -41,7 +43,10 @@ export default function AnnouncementsPage() {
     <Loading />
   ) : (
     <>
-    
+    <PageHeader
+        title={t("announcements.listTitle")}
+        
+      />
       <div className={styles.list}>
         {announcements.map((a) => (
           <Card key={a.id}>

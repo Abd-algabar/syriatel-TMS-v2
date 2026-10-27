@@ -1,11 +1,13 @@
 import { getTrainingProgram } from "../../Api/Trainee/trainingProgramApi"
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { decodeJwt } from "../../features/auth/auth.utils"
 export default function TrainingProgramHooks() {
     const [loadingAction, setLoadingAction] = useState(false);
     const [trainingProgram, setTrainingProgram] = useState({})
     const [trainingProgramPhases, setTrainingProgramPhases] = useState([])
     const controller = new AbortController();
+
     const getTrainingProgramInfo = async () => {
         try {
             setLoadingAction(true);
@@ -34,9 +36,8 @@ export default function TrainingProgramHooks() {
                 toast.error(error.message);
             }
         } finally {
-            if (!controller.signal.aborted) {
-                setLoadingAction(false);
-            }
+            setLoadingAction(false);
+
         }
     };
 
@@ -45,6 +46,6 @@ export default function TrainingProgramHooks() {
         trainingProgram,
         trainingProgramPhases,
         controller,
-        getTrainingProgramInfo
+        getTrainingProgramInfo,
     }
 }
