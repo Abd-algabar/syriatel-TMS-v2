@@ -117,8 +117,8 @@ export default function InterviewsPage() {
       key: "rating",
       header: t("interviews.rating"),
       render: (i) =>
-        i.rating ? (
-          <span className={styles.good}>{i.rating} / 5</span>
+        i.evaluation ? (
+          <span className={styles.good}>{i.evaluation} %</span>
         ) : (
           <span className={styles.muted}>{t("interviews.pendingRating")}</span>
         ),

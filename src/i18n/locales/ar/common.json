@@ -43,7 +43,8 @@
     "SubmissionDate": "تاريخ التقديم",
     "note": "الملاحظات",
     "rating":"التقيم",
-    "fire":"فصل"
+    "fire":"فصل",
+    "additionalInfo":"معلومات اضافية"
     
     
   },
